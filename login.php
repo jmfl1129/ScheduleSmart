@@ -5,7 +5,7 @@
 <html lang="en">
 <head> 
 
-	<title>Create event - ScheduleSmart</title> 
+	<title>ScheduleSmart</title> 
 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
@@ -13,12 +13,51 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+
 </head>
 <meta charset="utf-8"/>
 <body>
+
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand">SmartSchedule</a>
+	    </div>
+	   </div>
+	</nav>
+	<div class="container">
+		<h1>Log in</h1>
+		<br>
+		<div class="row"> 
+			<label for="uname"><b>Username</b></label>
+    		<input type="text" placeholder="Enter Username" name="uname" required>
+		</div>
+		<br>
+		<div class="row"> 
+			<label for="psw"><b>Password</b></label>
+    		<input type="password" placeholder="Enter Password" name="psw" required>
+		</div>
+		<br>
+		<div class="row"> 
+			<div class="col-sm-2"><button type="submit">Login</button></div>
+		    <div class="col-sm-2">
+			    <label>
+			      <input type="checkbox" checked="checked" name="remember"> Remember me
+			    </label>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+    
+
+    
+
+    	
+
+
+
 	
-	 
-	<h1>Add event details</h1>
-	
+
 </body>
 </html>

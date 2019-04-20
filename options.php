@@ -3,7 +3,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head> <title>Members - SmartSchedule</title> </head>
+<head> <title>Members - ScheduleSmart</title> </head>
 <meta charset="utf-8"/>
 <body>
 	
