@@ -20,5 +20,22 @@
 	 
 	<h1>Add event details</h1>
 	
+	<form action='/createevent.php' method="post">
+        <h5>Event title:</h5><input type="text" name="e_title" value=""><br><br>
+        <h5>Featured photo:</h5><input type="file" name="e_photo"><br><br>
+        <h5>Event Start Date: </h5><input type="date" name="s_date"><input type="time" name= "s_time">
+        <h5>Event End Date: </h5><input type="date" name="e_date"><input type="time" name= "e_time">
+        <h5>Event Venue: </h5><input type="text" name="e_venue" value="" size=100><br><br>
+        <h5>Category: </h5> <select name="e_cat">
+            <?php 
+                while($cat_item = pg_fetch_assoc($result)){
+                    echo '<option value="'.$cat_item['cid'].'">'.$cat_item['category'].'</option>';
+                }
+            ?>
+            </select>
+        <h5>Vacancy: </h5> <input type="text" name="e_vacancy" value=""><br><br>
+        <h5>Description</h5> <textarea name="e_description" rows="4" cols="80"></textarea><br><br>
+        <input type="submit" value="Submit">   <input type="reset" value="reset">
+        </form>
 </body>
 </html>
