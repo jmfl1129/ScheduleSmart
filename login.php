@@ -56,7 +56,7 @@
 	  </button>
 	  <br>
 	  <br>
-	  <button type="button" class="btn btn-primary col-sm-5" onclick="window.location.href='/schedulesmart/ueventlist.php'">
+	  <button type="button" class="btn btn-primary col-sm-5" onclick="window.location.href='/schedulesmart/ualleventlist.php'">
 	  	DUMMY User
 	  </button>
 	</form>
@@ -64,9 +64,9 @@
 
 
 	<script type="text/javascript">
-		//TODO if organizer button is checked, check if user is organizer, and send to organizer interface
+		//TODO if organizer button is checked, check if user is organizer, and send to organizer interface **************
 
-		//TODO if  organizer button is NOT checked, send to user interface
+		//TODO if  organizer button is NOT checked, send to user interface *******************************
 	</script>
 
 	<div class="container">

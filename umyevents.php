@@ -21,10 +21,23 @@
 
 	<!-- navigation bar on top -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-	  <a class="navbar-brand" href="/schedulesmart/organizer/myevents.php">ScheduleSmart Org</a>
-	  <button type="button" class="btn pull-right btn-danger" onclick="window.location.href='/schedulesmart/login.php'">
-	  	Sign in
+	  <a class="navbar-brand" href="/schedulesmart/ualleventlist.php">ScheduleSmart</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
 	  </button>
+	  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+	    <ul class="navbar-nav">
+	      <li class="nav-item">
+	        <a class="nav-link" href="/schedulesmart/ualleventlist.php">Event list</a>
+	      </li>
+	      <li class="nav-item active">
+	        <a class="nav-link" href="/schedulesmart/umyevents.php">My events<span class="sr-only">(current)</span></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="/schedulesmart/uoptions.php">Options</a>
+	      </li>
+	    </ul>
+	  </div>
 	</nav>
 	<br>
 	<br>
@@ -32,11 +45,12 @@
 
 	<div class="container">
 
-		<h1>Upcoming events</h1>
+		<h1>Your upcoming events</h1>
 		<br>
 
+
 		<script type="text/javascript">
-			//TODO populate list with public events, 20 at a time **********************
+			// TODO get events this user signed up for from database
 			var events = 'Event 1,Event 2,Event3'.split(',');
 			for (var event in events) {
 			    var newElement = document.createElement('div');
@@ -48,8 +62,6 @@
 			    document.querySelector('body > div').appendChild(newElement);
 			} 
 		</script>
-
-		
 
 	</div>
 

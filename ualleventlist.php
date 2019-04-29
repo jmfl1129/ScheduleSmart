@@ -21,14 +21,14 @@
 
 	<!-- navigation bar on top -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-	  <a class="navbar-brand" href="/schedulesmart/organizer/myevents.php">ScheduleSmart</a>
+	  <a class="navbar-brand" href="/schedulesmart/ualleventlist.php">ScheduleSmart</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
 	  <div class="collapse navbar-collapse" id="navbarNavDropdown">
 	    <ul class="navbar-nav">
 	      <li class="nav-item active">
-	        <a class="nav-link" href="/schedulesmart/uevents.php">Event list<span class="sr-only">(current)</span></a>
+	        <a class="nav-link" href="/schedulesmart/ualleventlist.php">Event list<span class="sr-only">(current)</span></a>
 	      </li>
 	      <li class="nav-item">
 	        <a class="nav-link" href="/schedulesmart/umyevents.php">My events</a>
@@ -43,27 +43,31 @@
 	<br>
 	<!-- END OF navigation bar on top -->
 
+
+	<!-- ========Display ALL events VISIBLE to USER ========-->
 	<div class="container">
 
-		<h1>Your upcoming events</h1>
+		<h1>Upcoming events</h1>
 		<br>
 
 		
 
 		<script type="text/javascript">
-			//TODO get events visible to this user from database and display
-				
-			<div class="card" style="width: 18rem;">
-			  <img class="card-img-top" src="..." alt="Card image cap">
-			  <div class="card-body">
-			    <h5 class='card-title'>Card title</h5>
-			    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-			    <a href="#" class="btn btn-primary">Go somewhere</a>
-			  </div>
-			</div>
+			// TODO get events this user HAS PERMISSION TO SEE for from database ******************************
+			var events = 'Event 1,Event 2,Event3'.split(',');
+			for (var event in events) {
+			    var newElement = document.createElement('div');
+			    newElement.id = events[event]; 
+			    newElement.className = "event";
+			    newElement.innerHTML = "<div class='row'> <div class='col-sm-8'>"+
+			    						events[event]+
+			    						"</div> <div class='col-sm-4'>Edit</div></div>"+"<br>";
+			    document.querySelector('body > div').appendChild(newElement);
+			} 
 		</script>
 
 	</div>
+	<!-- =====END OF event display ==============-->
 
 	
 

@@ -47,48 +47,55 @@
 	<br>
 	<!-- END OF navigation bar on top -->
 
-	<div class="container">
+	
 
-		
-		<div class="container" align="center">
-		<h1>Add event details</h1>
+	<!-- ENTER DETAILS OF EVENT HERE-->
+	<div class="container">
+		<h1 align="center">Add event details</h1>
 		<br>
+
+
 		<div class="row"> 
-			<div class="col-sm-2 offset-md-3"><label for="ename"><b>Name</b></label></div>
-    		<div class="col-sm-2"><input type="text" placeholder="Enter Username" name="uname" required></div>
+			<div class="col-sm-2 offset-md-3"><label for="ename"><b>Event Name</b></label></div>
+			<div class="col-sm-2"><input type="text" placeholder="Event Name" name="ename" required></div>
 		</div>
 		<br>
 		<div class="row"> 
 			<div class="col-sm-2 offset-md-3"><label for="edate"><b>Date</b></label></div>
-    		<div class="col-sm-2"><input type="password" placeholder="Enter Password" name="psw" required></div>
+			<div class="col-sm-2"><input type="text" placeholder="Choose Date" name="edate" required></div>
 		</div>
 		<br>
 		<div class="row"> 
 			<div class="col-sm-2 offset-md-3"><label for="etime"><b>Time</b></label></div>
-    		<div class="col-sm-2"><input type="password" placeholder="Enter Password" name="psw" required></div>
+			<div class="col-sm-2"><input type="text" placeholder="Choose Time" name="etime" required></div>
 		</div>
 		<br>
 		<div class="row"> 
 			<div class="col-sm-2 offset-md-3"><label for="elocation"><b>Location</b></label></div>
-    		<div class="col-sm-2"><input type="password" placeholder="Enter Password" name="psw" required></div>
+			<div class="col-sm-2"><input type="text" placeholder="Enter Location" name="elocation" required></div>
 		</div>
 		<br>
 		<div class="row"> 
-			<div class="col-sm-2 offset-md-5"><button type="submit" class="btn btn-primary btn-lg btn-block">Save</button></div>
+			<div class="col-sm-2 offset-md-3"><label  for="edescription"><b>Description</b></label></div>
+			<div class="input-lg col-sm-2"><input type="text" placeholder="Enter Event Description" name="edescription" required></div>
 		</div>
-	</div>
+		<br>
+		<div class="row"> 
+			<div class="col text-center">
+				<div class="btn btn-default"><button type="submit" class="btn btn-primary btn-lg btn-block">Save</button></div>
+			</div>
+		</div>
+
 
 		<script type="text/javascript">
-			//if event already exists, autofill old information
+			//TODO if event already exists, autofill old information into boxes
+			//TODO on click of submit, update database
 		</script>
 
 	</div>
 
-	
+	<!-- END ENTER DETAILS OF EVENT HERE-->
 
-
-
-	
 
 </body>
 </html>
