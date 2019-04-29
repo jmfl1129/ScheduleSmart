@@ -22,9 +22,25 @@
 	<!-- navigation bar on top -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 	  <a class="navbar-brand" href="/schedulesmart/organizer/myevents.php">ScheduleSmart Org</a>
-	  <button type="button" class="btn pull-right btn-danger" onclick="window.location.href='/schedulesmart/login.php'">
-	  	Sign in
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
 	  </button>
+	  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+	    <ul class="navbar-nav">
+	      <li class="nav-item active">
+	        <a class="nav-link" href="/schedulesmart/organizer/myevents.php">My events<span class="sr-only">(current)</span></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="/schedulesmart/organizer/createevent.php">Create event</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="/schedulesmart/organizer/members.php">Members</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="/schedulesmart/organizer/options.php">Options</a>
+	      </li>
+	    </ul>
+	  </div>
 	</nav>
 	<br>
 	<br>
@@ -32,11 +48,10 @@
 
 	<div class="container">
 
-		<h1>Upcoming events</h1>
+		<h1>Your upcoming events</h1>
 		<br>
 
 		<script type="text/javascript">
-			//TODO populate list with public events, 20 at a time
 			var events = 'Event 1,Event 2,Event3'.split(',');
 			for (var event in events) {
 			    var newElement = document.createElement('div');
@@ -49,7 +64,17 @@
 			} 
 		</script>
 
-		
+		<script type="text/javascript">
+				
+			<div class="card" style="width: 18rem;">
+			  <img class="card-img-top" src="..." alt="Card image cap">
+			  <div class="card-body">
+			    <h5 class='card-title'>Card title</h5>
+			    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+			    <a href="#" class="btn btn-primary">Go somewhere</a>
+			  </div>
+			</div>
+		</script>
 
 	</div>
 

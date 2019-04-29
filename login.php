@@ -18,35 +18,56 @@
 <meta charset="utf-8"/>
 <body>
 
-	<nav class="navbar navbar-default">
-	  <div class="container-fluid">
-	    <div class="navbar-header">
-	      <a class="navbar-brand">SmartSchedule</a>
-	    </div>
-	   </div>
+	
+	<!-- navigation bar on top -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+	  <h1 class="navbar-brand" href="/schedulesmart">ScheduleSmart</h1>
 	</nav>
-	<div class="container">
-		<h1>Log in</h1>
+
+	<br>
+	<br>
+	<!-- END OF navigation bar on top -->
+
+	<div class="container" align="center">
+		<h2>Log in</h2>
 		<br>
-		<div class="row"> 
-			<label for="uname"><b>Username</b></label>
-    		<input type="text" placeholder="Enter Username" name="uname" required>
-		</div>
-		<br>
-		<div class="row"> 
-			<label for="psw"><b>Password</b></label>
-    		<input type="password" placeholder="Enter Password" name="psw" required>
-		</div>
-		<br>
-		<div class="row"> 
-			<div class="col-sm-2"><button type="submit">Login</button></div>
-		    <div class="col-sm-2">
-			    <label>
-			      <input type="checkbox" checked="checked" name="remember"> Remember me
-			    </label>
-			</div>
-		</div>
-	</div>
+		
+
+		<!-- form used to log in -->
+	<form>
+	  <div class="form-group col-sm-5">
+	    <label for="inputEmail">Email address</label>
+	    <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+	  </div>
+	  <div class="form-group col-sm-5">
+	    <label for="inputPassword">Password</label>
+	    <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+	  </div>
+	  <div class="form-check col-sm-5">
+	    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+	    <label class="form-check-label" for="checkOrganizer">Sign in as organizer</label>
+	  </div>
+	  <br>
+	  <button type="submit" class="btn btn-primary col-sm-5">Submit</button>
+	  <br>
+	  <br>
+	  <button type="button" class="btn btn-primary col-sm-5" onclick="window.location.href='/schedulesmart/organizer/myevents.php'">
+	  	DUMMY Organizer
+	  </button>
+	  <br>
+	  <br>
+	  <button type="button" class="btn btn-primary col-sm-5" onclick="window.location.href='/schedulesmart/ueventlist.php'">
+	  	DUMMY User
+	  </button>
+	</form>
+	<!-- END of form used to log in -->
+
+
+	<script type="text/javascript">
+		//TODO if organizer button is checked, check if user is organizer, and send to organizer interface
+
+		//TODO if  organizer button is NOT checked, send to user interface
+	</script>
 
 	<div class="container">
     
