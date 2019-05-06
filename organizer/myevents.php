@@ -1,11 +1,16 @@
 <?php
 ?>
 
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head> 
 
 	<title>ScheduleSmart</title> 
+	
+	<link rel="stylesheet" href="../css/css_in_most_pages.css">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
@@ -20,59 +25,183 @@
 <body>
 
 	<!-- navigation bar on top -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-	  <a class="navbar-brand" href="/schedulesmart/organizer/myevents.php">ScheduleSmart Org</a>
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-	    <span class="navbar-toggler-icon"></span>
-	  </button>
-	  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-	    <ul class="navbar-nav">
-	      <li class="nav-item active">
-	        <a class="nav-link" href="/schedulesmart/organizer/myevents.php">My events<span class="sr-only">(current)</span></a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="/schedulesmart/organizer/createevent.php">Create event</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="/schedulesmart/organizer/members.php">Members</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="/schedulesmart/organizer/options.php">Options</a>
-	      </li>
-	    </ul>
-	  </div>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container">
+    <a class="navbar-brand" href="organizer/myevents.php">ScheduleSmart Org</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home
+                <span class="sr-only">(current)</span>
+              </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+		<li class="nav-item">
+		  <a class="nav-link" href="login.php">Sign in</a>
+		</li>
+      </ul>
+    </div>
+  </div>
 	</nav>
 	<br>
 	<br>
 	<!-- END OF navigation bar on top -->
+		
+			<!-- Page Content -->
+<div class="container">
 
-	<div class="container">
+  <!-- Page Heading -->
+  <h1 class="my-4">ALL your events here
+  <br>
+    <small>listed in pages( check it out now! )</small>
+  </h1>
 
-		<h1>Your upcoming events</h1>
-		<br>
+</div>
 
-		<script type="text/javascript">
-			var events = 'Event 1,Event 2,Event3'.split(',');
-			for (var event in events) {
-			    var newElement = document.createElement('div');
-			    newElement.id = events[event]; 
-			    newElement.className = "event";
-			    newElement.innerHTML = "<div class='row'> <div class='col-sm-8'>"+
-			    						events[event]+
-			    						"</div> <div class='col-sm-4'>Edit</div></div>"+"<br>";
-			    document.querySelector('body > div').appendChild(newElement);
-			} 
-		</script>
+<div class="container">
+  <div class="card border-0 shadow my-5">
+    <div class="card-body p-5">
+      <h1 class="font-weight-light">Fixed Full Page Background Image</h1>
+      
+  <div class="row">
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="#">Project One</a>
+          </h4>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="#">Project Two</a>
+          </h4>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="#">Project Three</a>
+          </h4>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="#">Project Four</a>
+          </h4>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="#">Project Five</a>
+          </h4>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="#">Project Six</a>
+          </h4>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque earum nostrum suscipit ducimus nihil provident, perferendis rem illo, voluptate atque, sit eius in voluptates, nemo repellat fugiat excepturi! Nemo, esse.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="#">Project Seven</a>
+          </h4>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="#">Project Eight</a>
+          </h4>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius adipisci dicta dignissimos neque animi ea, veritatis, provident hic consequatur ut esse! Commodi ea consequatur accusantium, beatae qui deserunt tenetur ipsa.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.row -->
 
+  <!-- Pagination -->
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="#">1</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="#">2</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="#">3</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+    </li>
+  </ul>
 
+</div>
+<!-- /.container -->
+  <footer id="sticky-footer" class="py-4 bg-light text-dark-50">
+    <div class="container text-center">
+      <small>ScheduleSmart</small>
+    </div>
+  </footer>
+</div>
 
-	</div>
-
-	
-
-
-
-	
+<!-- reference startbootstrap.com/snippets/full-image-background/
+	 startbootstrap.com/snippets/portfolio-four-column/-->
 
 </body>
 </html>
