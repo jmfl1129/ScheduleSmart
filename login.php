@@ -80,18 +80,11 @@
 	    <label class="form-check-label" for="checkOrganizer">Sign in as organizer</label>
 	  </div>
 	  <br>
+	  <br>
 	  <button type="submit" class="btn btn-lg btn-primary btn-block text-uppercase col-sm-5">Submit</button>
 	  <br>
-	  <br>
-	  <button type="button" class="btn btn-lg btn-primary btn-block text-uppercase col-sm-5" onclick="window.location.href='/schedulesmart/organizer/myevents.php'">
-	  	DUMMY Organizer
-	  </button>
-	  <br>
-	  <br>
-	  <button type="button" class="btn btn-lg btn-primary btn-block text-uppercase col-sm-5" onclick="window.location.href='/schedulesmart/ualleventlist.php'">
-	  	DUMMY User
-	  </button>
 	  <button class="btn btn-lg btn-google btn-block text-uppercase col-sm-5" type="submit"><i class="fab fa-google mr-2"></i> Sign up with Google</button>
+	  <br>
       <button class="btn btn-lg btn-facebook btn-block text-uppercase col-sm-5" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign up with Facebook</button>
              
 	</form>
