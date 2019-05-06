@@ -90,6 +90,8 @@
 	  <br>
 	  <button type="submit" class="btn btn-lg btn-primary btn-block text-uppercase col-sm-5">Submit</button>
 	  <br>
+	  <a class="btn btn-lg btn-primary btn-block text-uppercase col-sm-5" href = "/ScheduleSmart/sscreateaccount.php">Sign up</a>
+	  <br>
 	  <button class="btn btn-lg btn-google btn-block text-uppercase col-sm-5" type="submit"><i class="fab fa-google mr-2"></i> Sign up with Google</button>
 	  <br>
       <button class="btn btn-lg btn-facebook btn-block text-uppercase col-sm-5" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign up with Facebook</button>
