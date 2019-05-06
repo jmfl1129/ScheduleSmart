@@ -57,16 +57,27 @@
 	<br>
 	<!-- END OF navigation bar on top -->
 
+<div class="container">
+
+  <!-- Page Heading -->
+  <h1 class="my-4">Login Now!!
+  <br>
+    <small>check your user mode(s)</small>
+  </h1>
+
+</div>
+
+
 	<div class="container">
   <div class="card border-0 shadow my-5">
     <div class="card-body p-5">
 	<div class="container" align="center">
-		<h2>Log in</h2>
-		<br>
 		
 
 		<!-- form used to log in -->
 	<form class="form-signin">
+	<h5> Please enter your email address and password </h5>
+	<br>
 	  <div class="form-group col-sm-5">
 	    <label for="inputEmail"></label>
 	    <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Email address">
@@ -74,10 +85,6 @@
 	  <div class="form-group col-sm-5">
 	    <label for="inputPassword"></label>
 	    <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-	  </div>
-	  <div class="form-check col-sm-5">
-	    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-	    <label class="form-check-label" for="checkOrganizer">Sign in as organizer</label>
 	  </div>
 	  <br>
 	  <br>
@@ -98,13 +105,9 @@
 
 		//TODO if  organizer button is NOT checked, send to user interface *******************************
 	</script>
-
-	<div class="container">
     
 
     
-
-    	
 
 
 
