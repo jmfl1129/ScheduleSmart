@@ -68,12 +68,12 @@
 		<!-- form used to log in -->
 	<form class="form-signin">
 	  <div class="form-group col-sm-5">
-	    <label for="inputEmail">Email address</label>
-	    <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
+	    <label for="inputEmail"></label>
+	    <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Email address">
 	  </div>
 	  <div class="form-group col-sm-5">
-	    <label for="inputPassword">Password</label>
-	    <input type="password" class="form-control" id="inputPassword">
+	    <label for="inputPassword"></label>
+	    <input type="password" class="form-control" id="inputPassword" placeholder="Password">
 	  </div>
 	  <div class="form-check col-sm-5">
 	    <input type="checkbox" class="form-check-input" id="exampleCheck1">
