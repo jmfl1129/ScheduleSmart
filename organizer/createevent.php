@@ -62,12 +62,23 @@
 		<br>
 		<div class="row"> 
 			<div class="col-sm-2 offset-md-3"><label for="edate"><b>Date</b></label></div>
-			<div class="col-sm-2"><input type="text" placeholder="Choose Date" name="edate" required></div>
+			<div class="col-sm-2"><input type="date" placeholder="Enter Date" name="edate" required></div>
 		</div>
 		<br>
+        <div class="row"> 
+			<div class="col-sm-2 offset-md-3"><label for="eduration"><b>Duration</b></label></div>
+			<div class="col-sm-2"><input type="number" placeholder="Enter Duration" name="eduration" required></div>
+		</div>
+        <br>
 		<div class="row"> 
 			<div class="col-sm-2 offset-md-3"><label for="etime"><b>Time</b></label></div>
-			<div class="col-sm-2"><input type="text" placeholder="Choose Time" name="etime" required></div>
+            <div class="col text-center">
+			     <div class="col-sm-1"><input type="time" placeholder="Enter Time" name="etime" required></div>
+            </div>
+		</div>
+        <div class="row"> 
+			<div class="col-sm-2 offset-md-3"></div>
+			<div class="col-sm-2" id="timehints"></div>
 		</div>
 		<br>
 		<div class="row"> 
@@ -87,12 +98,18 @@
 		</div>
 
 
-		<script type="text/javascript">
-			//TODO if event already exists, autofill old information into boxes
-			//TODO on click of submit, update database
-		</script>
-
-	</div>
+	</div> 
+        
+        <script type="text/javascript">
+            //TODO make buttons depending on member available times, then populate list
+            $(document).ready(function(){
+                timehints = document.getElementById("timehints");
+                timehints.innerHTML= "<div class='btn btn-default'><button class='btn-info'>3:30 - 5:30 PM (2 unavailable) </button></div>"+
+                    "<div class='btn btn-default'><button class='btn-info'>6:00 - 7:00 PM (3     unavailable)</button></div>";
+                
+            });
+            //TODO onclick, enter time into time box
+        </script>
 
 	<!-- END ENTER DETAILS OF EVENT HERE-->
 
@@ -100,5 +117,3 @@
 </body>
 </html>
 	
-</body>
-</html>
