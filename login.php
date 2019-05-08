@@ -56,7 +56,7 @@
 	  </button>
 	  <br>
 	  <br>
-	  <button type="button" class="btn btn-primary col-sm-5" onclick="window.location.href='/schedulesmart/ualleventlist.php'">
+	  <button type="button" class="btn btn-primary col-sm-5" onclick="window.location.href='/schedulesmart/ueventlist.php'">
 	  	DUMMY User
 	  </button>
 	</form>

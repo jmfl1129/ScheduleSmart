@@ -28,7 +28,7 @@
 	  <div class="collapse navbar-collapse" id="navbarNavDropdown">
 	    <ul class="navbar-nav">
 	      <li class="nav-item">
-	        <a class="nav-link" href="/schedulesmart/ualleventlist.php">Event list</a>
+	        <a class="nav-link" href="/schedulesmart/ueventlist.php">Event list</a>
 	      </li>
 	      <li class="nav-item">
 	        <a class="nav-link" href="/schedulesmart/umyevents.php">My events</a>

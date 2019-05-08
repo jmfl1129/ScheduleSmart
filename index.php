@@ -35,19 +35,98 @@
 		<h1>Upcoming events</h1>
 		<br>
 
-		<script type="text/javascript">
-			//TODO populate list with public events, 20 at a time **********************
-			var events = 'Event 1,Event 2,Event3'.split(',');
-			for (var event in events) {
-			    var newElement = document.createElement('div');
-			    newElement.id = events[event]; 
-			    newElement.className = "event";
-			    newElement.innerHTML = "<div class='row'> <div class='col-sm-8'>"+
-			    						events[event]+
-			    						"</div> <div class='col-sm-4'>Edit</div></div>"+"<br>";
-			    document.querySelector('body > div').appendChild(newElement);
-			} 
-		</script>
+		<h3 align="center">Saturday, 10 May 2019</h3>
+        <br>
+        <!-- This holds all the events -->
+		<div class="card-deck">
+            <div class="row justify-content-md-center">
+                <div> <h1>5PM</h1>  </div>
+                
+                <div class="col-3 d-flex align-items-stretch">
+                  <div class="card h-200">
+                    <img class="card-img-top" src="/schedulesmartbak/images/Picture1.png" alt="Image not found ">
+                    <div class="card-body">
+                        <div class="col text-center">
+                            <h5 class="card-title">Chung Chi Chapel Service</h5>
+                            <a href="#" class="btn btn-primary">Details</a>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-3 d-flex align-items-stretch">
+                  <div class="card">
+                    <img class="card-img-top" src="/schedulesmartbak/images/Picture2.png" alt="Image not found ">
+                    <div class="card-body">
+                        <div class="col text-center">
+                            <h5 class="card-title">Medicine Fair 2019</h5>
+                            <a href="#" class="btn btn-primary">Details</a>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-3 d-flex align-items-stretch">
+                  <div class="card">
+                    <img class="card-img-top" src="/schedulesmartbak/images/Picture3.png" alt="Image not found ">
+                    <div class="card-body">
+                        <div class="col text-center">
+                            <h5 class="card-title">Meditation @ Learning Garden</h5>
+                            <a href="#" class="btn btn-primary">Details</a>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            
+            <br>    
+            
+            <!-- second row of events at a different t ime -->
+            <div class="row justify-content-md-center">
+                <div> <h1>6PM</h1>  </div>
+                
+                <div class="col-3">
+                  <div class="card h-200">
+                    <img class="card-img-top" src="/schedulesmartbak/images/Picture4.png" alt="Image not found ">
+                    <div class="card-body">
+                        <div class="col text-center">
+                            <h5 class="card-title">Student Expo</h5>
+                            <a href="#" class="btn btn-primary">Details</a>
+                        </div>
+                    </div>
+                  </div>
+                </div>     
+                
+                <div class="col-3">
+                  <div class="card h-200">
+                    <img class="card-img-top" src="/schedulesmartbak/images/Picture5.png" alt="Image not found ">
+                    <div class="card-body">
+                        <div class="col text-center">
+                            <h5 class="card-title">Basketball with Jo <a class="badge badge-info">Private</a></h5>
+                            <a href="#" class="btn btn-primary">Details</a>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-3">
+                  <div class="card h-200">
+                    <img class="card-img-top" src="/schedulesmartbak/images/Picture6.png" alt="Image not found ">
+                    <div class="card-body">
+                        <div class="col text-center">              
+                            
+                            <h5 class="card-title">CUSU Ball <a class="badge badge-info">CUSU</a></h5> 
+                            <a href="#" class="btn btn-primary">Details</a>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                
+                   
+                
+            </div>
+            
+        </div>
 
 		
 
