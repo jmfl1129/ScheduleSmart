@@ -21,7 +21,7 @@
 
 	<!-- navigation bar on top -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-	  <a class="navbar-brand" href="/schedulesmart/organizer/myevents.php">ScheduleSmart Org</a>
+	  <a class="navbar-brand" href="/schedulesmart/organizer/myevents.php">ScheduleSmart</a>
 	  <button type="button" class="btn pull-right btn-danger" onclick="window.location.href='/schedulesmart/login.php'">
 	  	Sign in
 	  </button>

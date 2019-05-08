@@ -47,7 +47,7 @@
     
     <div class="container">
 
-		<h1 align="center">Your upcoming events</h1>
+		<h1 align="center">Upcoming events</h1>
 		<br>
         
         <div class="row justify-content-md-center">

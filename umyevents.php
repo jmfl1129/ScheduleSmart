@@ -33,9 +33,6 @@
 	      <li class="nav-item active">
 	        <a class="nav-link" href="/schedulesmart/umyevents.php">My events<span class="sr-only">(current)</span></a>
 	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="/schedulesmart/uoptions.php">Options</a>
-	      </li>
 	    </ul>
 	  </div>
 	</nav>

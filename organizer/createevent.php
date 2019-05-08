@@ -37,9 +37,6 @@
 	      <li class="nav-item">
 	        <a class="nav-link" href="/schedulesmart/organizer/members.php">Members</a>
 	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="/schedulesmart/organizer/options.php">Options</a>
-	      </li>
 	    </ul>
 	  </div>
 	</nav>
