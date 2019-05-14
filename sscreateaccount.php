@@ -25,6 +25,8 @@ function Signup($name, $email, $password, $organizer){
 	setcookie('id', '', time() - 3600);
     header('Location: login.php');
   }
+  $row = $sql->fetch(PDO::FETCH_ASSOC);
+  echo $row;
   while ($row = $sql->fetch(PDO::FETCH_ASSOC)){
     setcookie('logged', 'true', time() + (86400 * 30), "/");
     setcookie('email', $email, time() + (86400 * 30) , "/");
