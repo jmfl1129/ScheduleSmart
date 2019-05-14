@@ -10,7 +10,7 @@
 		</textarea>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Go Back</button>
-                <a class="btn btn-default" href = "/ScheduleSmart/takeaphoto_dude.php">Join</a>
+                <a class="btn btn-default" href = "takeaphoto_dude.php">Join</a>
             </div>
         </div>
     </div>
