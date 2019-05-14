@@ -17,7 +17,9 @@ function login($email, $password){
   $result = $query->execute();
   if(!$result){
 	  $message = "This email is not validate. Please signup with it or check if the email is wrong";
-	  echo "<script type='text/javascript'>alert('$message');</script>";
+	  echo "<script window.location.reload();\n
+			type='text/javascript'>alert('$message'); 
+			 </script>";
   }
   
   // check for login successful or not
@@ -28,7 +30,9 @@ function login($email, $password){
   $result = $query->execute();
   if(!$result){
 	  $message = "Login unsuccessfully";
-	  echo "<script type='text/javascript'>alert('$message');</script>";
+	  echo "<script window.location.reload();\n
+			type='text/javascript'>alert('$message'); 
+			 </script>";
   }
   else{
 	while($row = $query->fetch(\PDO::FETCH_ASSOC)){

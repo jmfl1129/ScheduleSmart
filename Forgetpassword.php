@@ -29,7 +29,9 @@ function SendForgetPasswordEmail($email){
   else{
 	  
 	  $message = "Wrong email";
-	  echo "<script type='text/javascript'>alert('$message');</script>";
+	  echo "<script window.location.reload();\n
+			type='text/javascript'>alert('$message'); 
+			 </script>";
 	  
   }
   
