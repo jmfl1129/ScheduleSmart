@@ -14,8 +14,8 @@ function Signup($name, $email, $password, $organizer){
   $q = 'SELECT FROM users WHERE name = :name;';
   $query = $conn->prepare($q);
   $query->bindValue(':name', $name);
-  $result = $query->execute();
-  if($result){
+  $result1 = $query->execute();
+  if($result1){
 	  $message = "username have been chosen, please select a new one";
 	  echo "<script window.location.reload();</script>";
 	  echo "<script
@@ -27,8 +27,8 @@ function Signup($name, $email, $password, $organizer){
   $q = 'SELECT FROM users WHERE organizer = :name;';
   $query = $conn->prepare($q);
   $query->bindValue(':name', $organizer);
-  $result = $query->execute();
-  if($result){
+  $result2 = $query->execute();
+  if($result2){
 	  $message = "The organization already have a organizer, please ask to cofirm for your signup. Only one account for one organization.";
 	  echo "<script window.location.reload();\n
 			type='text/javascript'>alert('$message'); 
@@ -39,37 +39,40 @@ function Signup($name, $email, $password, $organizer){
   $q = 'SELECT FROM users WHERE email = :name;';
   $query = $conn->prepare($q);
   $query->bindValue(':name', $email);
-  $result = $query->execute();
-  if($result){
+  $result3 = $query->execute();
+  if($result3){
 	  $message = "This email have been used to register an account. Please use another one to register or we may send you the password through forget password button";
 	  echo "<script window.location.reload();\n
 			type='text/javascript'>alert('$message'); 
 			 </script>";
   }
   
+  if(!$result1 && !$result2 && !$result3){
+	  
+	  $q = 'INSERT INTO users (name, password, organizer, email) VALUES (:name, :password, :organizer, :email);';
+	  $sql = $conn->prepare($q);
+	  $sql->bindValue(':name', $name);
+	  $sql->bindValue(':password', $password);
+	  $sql->bindValue(':organizer', $organizer);
+	  $sql->bindValue(':email', $email);
+	  $result = $sql->execute();
+	  if(!$result){
+		$_SESSION['error'] = 'INCORRECT PASSWORD OR USERNAME.';
+		setcookie('logged', '', time() - 3600);
+		setcookie('email', '', time() - 3600);
+		setcookie('id', '', time() - 3600);
+		header('Location: login.php');
+	  }
+	  if($result){
+		setcookie('logged', '', time() - 3600);
+		setcookie('email', '', time() - 3600);
+		setcookie('id', '', time() - 3600);
+		setcookie('logged', 'true', time() + (86400 * 30), "/");
+		setcookie('email', $email, time() + (86400 * 30) , "/");
+		setcookie('id', $conn->lastInsertId(), time() + (86400 * 30) , "/");
+		header('Location: index.php');
+	  }
   
-  $q = 'INSERT INTO users (name, password, organizer, email) VALUES (:name, :password, :organizer, :email);';
-  $sql = $conn->prepare($q);
-  $sql->bindValue(':name', $name);
-  $sql->bindValue(':password', $password);
-  $sql->bindValue(':organizer', $organizer);
-  $sql->bindValue(':email', $email);
-  $result = $sql->execute();
-  if(!$result){
-    $_SESSION['error'] = 'INCORRECT PASSWORD OR USERNAME.';
-	setcookie('logged', '', time() - 3600);
-    setcookie('email', '', time() - 3600);
-	setcookie('id', '', time() - 3600);
-    header('Location: login.php');
-  }
-  if($result){
-	setcookie('logged', '', time() - 3600);
-    setcookie('email', '', time() - 3600);
-	setcookie('id', '', time() - 3600);
-    setcookie('logged', 'true', time() + (86400 * 30), "/");
-    setcookie('email', $email, time() + (86400 * 30) , "/");
-	setcookie('id', $conn->lastInsertId(), time() + (86400 * 30) , "/");
-	header('Location: index.php');
   }
 }
 
