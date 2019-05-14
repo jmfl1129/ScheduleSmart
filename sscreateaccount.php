@@ -15,6 +15,8 @@ function Signup($name, $email, $password, $organizer){
   $query = $conn->prepare($q);
   $query->bindValue(':name', $name);
   $query->execute();
+  $result1 = $query->fetch(\PDO::FETCH_ASSOC);
+  echo $result1;
   if($result1 = $query->fetch(\PDO::FETCH_ASSOC)){
 	  $message = "username have been chosen, please select a new one";
 	  echo "<script
