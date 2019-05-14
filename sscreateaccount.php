@@ -22,6 +22,8 @@ function Signup($name, $email, $password, $organizer){
     setcookie('logged', 'true', time() + (86400 * 30), "/");
     setcookie('email', $email, time() + (86400 * 30) , "/");
 	setcookie('id', $row['id'], time() + (86400 * 30) , "/");
+	echo $result;
+	echo $row;
 	echo $_COOKIE['id'];
   if(!$result){
     $_SESSION['error'] = 'INCORRECT PASSWORD OR USERNAME.';
