@@ -20,7 +20,7 @@ function Signup($name, $email, $password, $organizer){
   $result = $sql->execute();
   echo $result;
   $counter = 0;
-  while ($row = $sql->fetch(\PDO::FETCH_ASSOC)){
+  while ($row = $pg_fetch_array($result){
 	$counter += 1;
     setcookie('logged', 'true', time() + (86400 * 30), "/");
     setcookie('email', $email, time() + (86400 * 30) , "/");
