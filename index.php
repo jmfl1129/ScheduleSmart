@@ -125,7 +125,7 @@ if(isset($_COOKIE['id'])){
                     <div class="card-body">
                         <div class="col text-center">
                             <h5 class="card-title">Chung Chi Chapel Service</h5>
-							<a class="btn btn-primary" data-toggle="modal" href="#myModal" id="modellink">Details</a>
+							<a class="btn btn-primary" data-toggle="modal" href="#myModal" class="modellink">Details</a>
 							<div class="modal-container"></div>
 						</div>
                     </div>
@@ -138,7 +138,7 @@ if(isset($_COOKIE['id'])){
                     <div class="card-body">
                         <div class="col text-center">
                             <h5 class="card-title">Medicine Fair 2019</h5>
-                            <a class="btn btn-primary" data-toggle="modal" href="#myModal" id="modellink">Details</a>
+                            <a class="btn btn-primary" data-toggle="modal" href="#myModal" class="modellink">Details</a>
 							<div class="modal-container"></div>
                         </div>
                     </div>
@@ -151,7 +151,7 @@ if(isset($_COOKIE['id'])){
                     <div class="card-body">
                         <div class="col text-center">
                             <h5 class="card-title">Meditation @ Learning Garden</h5>
-                            <a class="btn btn-primary" data-toggle="modal" href="#myModal" id="modellink">Details</a>
+                            <a class="btn btn-primary" data-toggle="modal" href="#myModal" class="modellink">Details</a>
 							<div class="modal-container"></div>
                         </div>
                     </div>
@@ -260,7 +260,7 @@ if(isset($_COOKIE['id'])){
 <script type="text/javascript">
 	$(document).ready(function(){
 		var url = "modalbox.php";
-		jQuery('#modellink').click(function(e) {
+		$('.modellink').click(function(e) {
 		    $('.modal-container').load(url,function(result){
 				$('#myModal').modal('show');
 			});
