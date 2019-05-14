@@ -30,6 +30,8 @@ function Signup($name, $email, $password, $organizer){
     setcookie('email', $email, time() + (86400 * 30) , "/");
 	setcookie('id', $conn->lastInsertId(), time() + (86400 * 30) , "/");
 	echo $_COOKIE['id'];
+	echo $conn->lastInsertId();
+	echo $result;
   }
 }
 
