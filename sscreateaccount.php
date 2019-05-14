@@ -25,22 +25,14 @@ function Signup($name, $email, $password, $organizer){
 	setcookie('id', '', time() - 3600);
     header('Location: login.php');
   }
-  $query = "SELECT * FROM users where name = '" . trim($name) . "' AND password = '" . trim($password) . "';";
-  $result = pg_query($query);
-  $row = pg_fetch_assoc($result);
+  while ($row = $sql->fetch(\PDO::FETCH_ASSOC){
     setcookie('logged', 'true', time() + (86400 * 30), "/");
     setcookie('email', $email, time() + (86400 * 30) , "/");
 	setcookie('id', $row['id'], time() + (86400 * 30) , "/");
-	echo $result;
-	echo $row;
 	echo $_COOKIE['id'];
-  if(!$result){
-    $_SESSION['error'] = 'INCORRECT PASSWORD OR USERNAME.';
-	setcookie('logged', '', time() - 3600);
-    setcookie('email', '', time() - 3600);
-	setcookie('id', '', time() - 3600);
-    header('Location: login.php');
+    header('Location: index.php');
   }
+
 }
 
 session_start();
