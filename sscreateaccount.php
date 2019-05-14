@@ -18,7 +18,6 @@ function Signup($name, $email, $password, $organizer){
   $sql->bindValue(':organizer', $organizer);
   $sql->bindValue(':email', $email);
   $result = $sql->execute();
-  echo $result;
   $counter = 0;
   while ($row = $pg_fetch_array($result)){
 	$counter++;
