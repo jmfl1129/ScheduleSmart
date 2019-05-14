@@ -2,33 +2,33 @@
 function Signup($name, $email, $password, $organizer){
 	$id = 1;
   $db = parse_url(getenv("DATABASE_URL"));
-  /*$conn = new PDO("mysql:host=127.0.0.1; port=80; user=localadmin; password=admin; dbname=ScheduleSmart" /*. sprintf(
+  $conn = new PDO("pgsql:". sprintf(
     "host=%s;port=%s;user=%s;password=%s;dbname=%s",
     $db["host"],
     $db["port"],
     $db["user"],
     $db["pass"],
     ltrim($db["path"], "/")
-    ));*/
-	$conn = mysqli_connect("localhost", "localadmin", "admin", "ScheduleSmart") or die ("cannot connect");
+    ));
 	
   $q = 'INSERT INTO users (name, password, organizer, email) VALUES (?, ?, ?, ?);';
   $sql = $conn->prepare($q);
   $sql->bind_param("ssss", $name, $password, $organizer, $email);
   $result = $sql->execute();
   echo $result;
-  /*$counter = 0;
+  $counter = 0;
   while ($row = $sql->fetch(\PDO::FETCH_ASSOC)){
 	$counter += 1;
     setcookie('logged', 'true', time() + (86400 * 30), "/");
     setcookie('email', $email, time() + (86400 * 30) , "/");
 	setcookie('id', $row['id'], time() + (86400 * 30) , "/");
+	echo $_COOKIE['id'];
     header('Location: index.php');
   }
   if($counter == 0){
     $_SESSION['error'] = 'INCORRECT PASSWORD OR USERNAME.';
     header('Location: login.php');
-  }*/
+  }
 }
 
 session_start();
