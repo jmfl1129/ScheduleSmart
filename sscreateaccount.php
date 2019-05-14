@@ -25,7 +25,7 @@ function Signup($name, $email, $password, $organizer){
 	setcookie('id', '', time() - 3600);
     header('Location: login.php');
   }
-  while ($result){
+  if($result){
     setcookie('logged', 'true', time() + (86400 * 30), "/");
     setcookie('email', $email, time() + (86400 * 30) , "/");
 	setcookie('id', $conn->lastInsertId(), time() + (86400 * 30) , "/");
