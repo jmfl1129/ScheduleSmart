@@ -1,13 +1,15 @@
-<div id="myModal" class="modal fade">
+<div id="myModal" class="modal hide fade">
     <div class="modal-dialog modal-lg" >
         <div class="modal-content" style="width:1250px;">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Event details:</h4>
             </div>
-		<textarea rows="30" cols="70">
-		
-		</textarea>
+			<div class="modal-body">
+				<textarea rows="30" cols="70">
+					
+				</textarea>
+			</div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Go Back</button>
                 <a class="btn btn-default" href = "takeaphoto_dude.php">Join</a>

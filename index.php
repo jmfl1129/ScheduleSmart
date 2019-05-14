@@ -58,7 +58,7 @@ if(isset($_COOKIE['id'])){
 	<!-- navigation bar on top -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
 		<div class="container">
-    <a class="navbar-brand" href="/ScheduleSmart/organizer/myevents.php">ScheduleSmart Org</a>
+    <a class="navbar-brand" href="index.php">ScheduleSmart Org</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -80,10 +80,10 @@ if(isset($_COOKIE['id'])){
 		  <a class="nav-link" href="ualleventlist.php"> <?php echo $_COOKIE['name']; ?> </a>
 		</li>
 		<li>
-		  <a class="nav-link" href="/schedulesmart/logout.php">Log out</a>
+		  <a class="nav-link" href="logout.php">Log out</a>
 		</li>
 		<?php } else { ?>
-		  <a class="nav-link" href="/schedulesmart/login.php">Sign in</a>
+		  <a class="nav-link" href="login.php">Sign in</a>
 		</li>
 		<?php } ?>
 		
@@ -262,7 +262,7 @@ if(isset($_COOKIE['id'])){
 		var url = "modalbox.php";
 		jQuery('#modellink').click(function(e) {
 		    $('.modal-container').load(url,function(result){
-				$('#myModal').modal({show:true});
+				$('#myModal').modal('show');
 			});
 		});
 	});
