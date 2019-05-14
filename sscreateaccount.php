@@ -20,7 +20,7 @@ function Signup($name, $email, $password, $organizer){
   $result = $sql->execute();
   echo $result;
   $counter = 0;
-  //while ($row = $pg_fetch_array($result){
+  while ($row = $pg_fetch_array($result){
 	$counter += 1;
     setcookie('logged', 'true', time() + (86400 * 30), "/");
     setcookie('email', $email, time() + (86400 * 30) , "/");
@@ -30,6 +30,9 @@ function Signup($name, $email, $password, $organizer){
   }
   if($counter == 0){
     $_SESSION['error'] = 'INCORRECT PASSWORD OR USERNAME.';
+	setcookie('logged', '', time() - 3600);
+    setcookie('email', '', time() - 3600);
+	setcookie('id', '', time() - 3600);
     header('Location: login.php');
   }
 }
