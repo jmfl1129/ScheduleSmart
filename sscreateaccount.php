@@ -18,7 +18,7 @@ function Signup($name, $email, $password, $organizer){
   $sql->bindValue(':organizer', $organizer);
   $sql->bindValue(':email', $email);
   $result = $sql->execute();
-  $row = pg_fetch_assoc($result)
+  $row = pg_fetch_assoc($result);
     setcookie('logged', 'true', time() + (86400 * 30), "/");
     setcookie('email', $email, time() + (86400 * 30) , "/");
 	setcookie('id', $row['id'], time() + (86400 * 30) , "/");
