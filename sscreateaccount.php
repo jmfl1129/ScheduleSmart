@@ -25,16 +25,12 @@ function Signup($name, $email, $password, $organizer){
 	setcookie('id', '', time() - 3600);
     header('Location: login.php');
   }
-  $row = $sql->fetch(PDO::FETCH_ASSOC);
-  echo $row;
-  while ($row = $sql->fetch(PDO::FETCH_ASSOC)){
+  while ($result){
     setcookie('logged', 'true', time() + (86400 * 30), "/");
     setcookie('email', $email, time() + (86400 * 30) , "/");
-	setcookie('id', $row['id'], time() + (86400 * 30) , "/");
+	setcookie('id', $conn->lastInsertId(), time() + (86400 * 30) , "/");
 	echo $_COOKIE['id'];
-    header('Location: index.php');
   }
-
 }
 
 session_start();
