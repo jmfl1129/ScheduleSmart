@@ -21,7 +21,7 @@ function Signup($name, $email, $password, $organizer){
   echo $result;
   $counter = 0;
   while ($row = $pg_fetch_array($result){
-	$counter += 1;
+	$counter++;
     setcookie('logged', 'true', time() + (86400 * 30), "/");
     setcookie('email', $email, time() + (86400 * 30) , "/");
 	setcookie('id', $row['id'], time() + (86400 * 30) , "/");
