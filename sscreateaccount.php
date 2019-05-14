@@ -11,9 +11,13 @@ function Signup($name, $email, $password, $organizer){
     ltrim($db["path"], "/")
     ));
 	
-  $q = 'INSERT INTO users (name, password, organizer, email) VALUES (?, ?, ?, ?);';
+  $q = 'INSERT INTO users (name, password, organizer, email) VALUES (:name, :password, :organizer, :email);';
   $sql = $conn->prepare($q);
-  $result = $sql->execute($name, $password, $organizer, $email);
+  $sql->bindValue(':name', $name);
+  $sql->bindValue(':password', $password);
+  $sql->bindValue(':organizer', $organizer);
+  $sql->bindValue(':email', $email);
+  $result = $sql->execute();
   echo $result;
   $counter = 0;
   while ($row = $sql->fetch(\PDO::FETCH_ASSOC)){
