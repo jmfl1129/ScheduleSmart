@@ -35,6 +35,8 @@ function SendForgetPasswordEmail($email){
 	  
   }
   
+}
+  
 session_start();
 if (isset($_POST['Submitemail'])){
     SendForgetPasswordEmail(htmlspecialchars($_POST['Email']));
