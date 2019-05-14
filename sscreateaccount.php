@@ -17,10 +17,7 @@ function Signup($name, $email, $password, $organizer){
   $result1 = $query->execute();
   if($result1){
 	  $message = "username have been chosen, please select a new one";
-	  echo "<script window.location.reload();</script>";
-	  echo "<script
-			type='text/javascript'>alert('$message');
-			 </script>";
+	  echo "<scripttype='text/javascript'>alert('$message');</script>";
   }
   
   // check if the organization have registered for an account
@@ -30,7 +27,7 @@ function Signup($name, $email, $password, $organizer){
   $result2 = $query->execute();
   if($result2){
 	  $message = "The organization already have a organizer, please ask to cofirm for your signup. Only one account for one organization.";
-	  echo "<script window.location.reload();\n
+	  echo "<script
 			type='text/javascript'>alert('$message'); 
 			 </script>";
   }
@@ -42,7 +39,7 @@ function Signup($name, $email, $password, $organizer){
   $result3 = $query->execute();
   if($result3){
 	  $message = "This email have been used to register an account. Please use another one to register or we may send you the password through forget password button";
-	  echo "<script window.location.reload();\n
+	  echo "<script
 			type='text/javascript'>alert('$message'); 
 			 </script>";
   }
