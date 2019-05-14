@@ -100,7 +100,7 @@ if(isset($_COOKIE['id'])){
         </li>
 		<li class="nav-item">
 		<?php if(isset($_COOKIE['id'])){ ?>
-		  <a class="nav-link" href="/schedulesmart/ualleventlist.php"> <?php echo $_COOKIE['name']; ?> </a>
+		  <a class="nav-link" href="ualleventlist.php"> <?php echo $_COOKIE['name']; ?> </a>
 		</li>
 		<li>
 		  <a class="nav-link" href="/schedulesmart/logout.php">Log out</a>
