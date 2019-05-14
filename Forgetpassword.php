@@ -1,5 +1,5 @@
 <?php
-function Signup($name, $email, $password, $organizer){
+function SendForgetPasswordEmail($email){
   $db = parse_url(getenv("DATABASE_URL"));
   $conn = new PDO("pgsql:". sprintf(
     "host=%s;port=%s;user=%s;password=%s;dbname=%s",
@@ -10,65 +10,32 @@ function Signup($name, $email, $password, $organizer){
     ltrim($db["path"], "/")
     ));
 	
-  // check if the username have been used
-  $q = 'SELECT FROM users WHERE name = :name;';
-  $query = $conn->prepare($q);
-  $query->bindValue(':name', $name);
-  $result = $query->execute();
-  if($result){
-	  $message = "username have been chosen, please select a new one";
-	  echo "<script type='text/javascript'>alert('$message');</script>";
-  }
-  
-  // check if the organization have registered for an account
-  $q = 'SELECT FROM users WHERE organizer = :name;';
-  $query = $conn->prepare($q);
-  $query->bindValue(':name', $organizer);
-  $result = $query->execute();
-  if($result){
-	  $message = "The organization already have a organizer, please ask to cofirm for your signup. Only one account for one organization.";
-	  echo "<script type='text/javascript'>alert('$message');</script>";
-  }
-	
   // check if the email have been used to register an account
   $q = 'SELECT FROM users WHERE email = :name;';
   $query = $conn->prepare($q);
   $query->bindValue(':name', $email);
   $result = $query->execute();
   if($result){
-	  $message = "This email have been used to register an account. Please use another one to register or we may send you the password through forget password button";
+	  $result = $query->fetch(\PDO::FETCH_ASSOC);
+	  $password = $result['password'];
+	  $subject = 'Your password on ScheduleSmart';
+	  $message = " Dear our faithful user, \r\n\r\n
+					Here is your password: ${password}. \r\n
+					Thank you for using ScheduleSmart! \r\n 
+					Yours faithfully, \r\n
+					ScheduleSmart developer";
+	  mail($email, $subject, $message);
+  }
+  else{
+	  
+	  $message = "Wrong email";
 	  echo "<script type='text/javascript'>alert('$message');</script>";
+	  
   }
   
-  
-  $q = 'INSERT INTO users (name, password, organizer, email) VALUES (:name, :password, :organizer, :email);';
-  $sql = $conn->prepare($q);
-  $sql->bindValue(':name', $name);
-  $sql->bindValue(':password', $password);
-  $sql->bindValue(':organizer', $organizer);
-  $sql->bindValue(':email', $email);
-  $result = $sql->execute();
-  if(!$result){
-    $_SESSION['error'] = 'INCORRECT PASSWORD OR USERNAME.';
-	setcookie('logged', '', time() - 3600);
-    setcookie('email', '', time() - 3600);
-	setcookie('id', '', time() - 3600);
-    header('Location: login.php');
-  }
-  if($result){
-	setcookie('logged', '', time() - 3600);
-    setcookie('email', '', time() - 3600);
-	setcookie('id', '', time() - 3600);
-    setcookie('logged', 'true', time() + (86400 * 30), "/");
-    setcookie('email', $email, time() + (86400 * 30) , "/");
-	setcookie('id', $conn->lastInsertId(), time() + (86400 * 30) , "/");
-	header('Location: index.php');
-  }
-}
-
 session_start();
-if (isset($_POST['Signup'])){
-    Signup(htmlspecialchars($_POST['Name']), htmlspecialchars($_POST['Email']),htmlspecialchars($_POST['Password']), htmlspecialchars($_POST['Organizer']));
+if (isset($_POST['Submitemail'])){
+    SendForgetPasswordEmail(htmlspecialchars($_POST['Email']);
 }
 ?>
 
@@ -147,30 +114,16 @@ if (isset($_POST['Signup'])){
 		
 
 		<!-- form used to log in -->
-	<form method="POST" action="sscreateaccount.php" class="form-signin">
-	<h5> Please enter the following info to Create your account </h5>
+	<form method="POST" action="Forgetpassword.php" class="form-signin">
+	<h5> Please enter your registered email </h5>
 	<br>
 	  <div class="form-group">
-	    <label for="inputName"></label>
-	    <input type="text" class="form-control" id="inputName" name="Name" placeholder=" Your username shown to everybody here: ">
-	  </div>
-	  <div class="form-group">
-	    <label for="inputEmail"></label>
-	    <input type="email" class="form-control" id="inputEmail" name="Email"    aria-describedby="emailHelp" placeholder="Email address">
-	  </div>
-	  <div class="form-group">
-	    <label for="inputPassword"></label>
-	    <input type="password" class="form-control" id="inputPassword" name="Password" placeholder="Password">
-	  </div>
-	  <div class="form-group">
-	    <label for="inputOrganizer"></label>
-	    <input type="text" class="form-control" id="inputOrganizer" name="Organizer" placeholder="Organization name here, leave it blank if you aren't">
+	    <label for="email"></label>
+	    <input type="text" class="form-control" id="inputName" name="Email" placeholder=" Email ">
 	  </div>
 	  <br>
 	  <br>
-	  <button type="submit" name="Signup" class="btn btn-lg btn-primary btn-block text-uppercase">Sign up</button>
-	  <br>
-	  <a class="btn btn-lg btn-primary btn-block text-uppercase" href = "Forgetpassword.php">Forget Password</a>
+	  <button type="submit" name="Submitemail" class="btn btn-lg btn-primary btn-block text-uppercase">Send the password to you through email</button>
 	  <br>
 	  <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign up with Google</button>
 	  <br>

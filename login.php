@@ -1,43 +1,46 @@
 <?php
 function login($email, $password){
-	$id = 1;
-	$organizer = "String";
-	$name = "string";
-	$eventid = "string";
   $db = parse_url(getenv("DATABASE_URL"));
-  /*$conn = new PDO("pgsql:" . sprintf(
+  $conn = new PDO("pgsql:". sprintf(
     "host=%s;port=%s;user=%s;password=%s;dbname=%s",
     $db["host"],
     $db["port"],
     $db["user"],
     $db["pass"],
     ltrim($db["path"], "/")
-    ));*/
-	$conn = mysqli_connect("localhost", "localadmin", "admin", "ScheduleSmart") or die ("cannot connect");
-  $q = 'SELECT * FROM users WHERE email=? AND password=?';
-  $sql = $conn->prepare($q);
-  $sql->bind_param("ss", $email, $password);
-  $sql->execute();
-  $result = $sql->get_result();
-  $counter = 0;
-  /*while ($row = $sql->fetch(\PDO::FETCH_ASSOC)){
-	$counter += 1;
-    setcookie('logged', 'true', time() + (86400 * 30), "/");
-    setcookie('email', $email, time() + (86400 * 30) , "/");
-	setcookie('id', $row['id'], time() + (86400 * 30) , "/");
-	header('Location: index.php');
-  }*/
-  while ($row = $result->fetch_assoc()) {
-	$counter += 1;
-    setcookie('logged', 'true', time() + (86400 * 30), "/");
-    setcookie('email', $email, time() + (86400 * 30) , "/");
-	setcookie('id', $row['id'], time() + (86400 * 30) , "/");
-	setcookie('name', $row['name'], time() + (86400 * 30) , "/");
-	header('Location: index.php');
+    ));
+	
+  // check if the email is wrong or not
+  $q = 'SELECT FROM users WHERE email = :name;';
+  $query = $conn->prepare($q);
+  $query->bindValue(':name', $email);
+  $result = $query->execute();
+  if(!$result){
+	  $message = "This email is not validate. Please signup with it or check if the email is wrong";
+	  echo "<script type='text/javascript'>alert('$message');</script>";
   }
-  if($counter == 0){
-    $_SESSION['error'] = 'INCORRECT PASSWORD OR USERNAME.';
-	echo $_SESSION['error'];
+  
+  // check for login successful or not
+  $q = 'SELECT FROM users WHERE email = :name AND password = :password;';
+  $query = $conn->prepare($q);
+  $query->bindValue(':name', $email);
+  $query->bindValue(':password', $password);
+  $result = $query->execute();
+  if(!$result){
+	  $message = "Login unsuccessfully";
+	  echo "<script type='text/javascript'>alert('$message');</script>";
+  }
+  else{
+	while($row = $query->fetch(\PDO::FETCH_ASSOC)){
+		setcookie('logged', '', time() - 3600);
+		setcookie('email', '', time() - 3600);
+		setcookie('id', '', time() - 3600);
+		setcookie('logged', 'true', time() + (86400 * 30), "/");
+		setcookie('email', $email, time() + (86400 * 30) , "/");
+		setcookie('id', $row['id'], time() + (86400 * 30) , "/");
+		header('Location: index.php'); 
+	}
+	  
   }
 }
 
@@ -72,7 +75,7 @@ if (isset($_POST['login'])){
 	<!-- navigation bar on top -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container">
-    <a class="navbar-brand" href="/ScheduleSmart/organizer/myevents.php">ScheduleSmart Org</a>
+    <a class="navbar-brand" href="index.php">ScheduleSmart Org</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -93,7 +96,7 @@ if (isset($_POST['login'])){
           <a class="nav-link" href="#">Contact</a>
         </li>
 		<li class="nav-item">
-		  <a class="nav-link" href="/schedulesmart/login.php">Sign in</a>
+		  <a class="nav-link" href="login.php">Sign in</a>
 		</li>
       </ul>
     </div>
@@ -137,7 +140,7 @@ if (isset($_POST['login'])){
 	  <br>
 	  <button type="submit" name= "login" class="btn btn-lg btn-primary btn-block text-uppercase col-sm-5" >Submit</button>
 	  <br>
-	  <a class="btn btn-lg btn-primary btn-block text-uppercase col-sm-5" href = "/ScheduleSmart/sscreateaccount.php">Sign up</a>
+	  <a class="btn btn-lg btn-primary btn-block text-uppercase col-sm-5" href = "sscreateaccount.php">Sign up</a>
 	  <br>
 	  <button class="btn btn-lg btn-google btn-block text-uppercase col-sm-5" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>
 	  <br>
