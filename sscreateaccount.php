@@ -18,13 +18,11 @@ function Signup($name, $email, $password, $organizer){
   $sql->bindValue(':organizer', $organizer);
   $sql->bindValue(':email', $email);
   $result = $sql->execute();
-  while ($row = pg_fetch_assoc($result)){
+  $row = pg_fetch_assoc($result)
     setcookie('logged', 'true', time() + (86400 * 30), "/");
     setcookie('email', $email, time() + (86400 * 30) , "/");
 	setcookie('id', $row['id'], time() + (86400 * 30) , "/");
 	echo $_COOKIE['id'];
-    header('Location: index.php');
-  }
   if(!$result){
     $_SESSION['error'] = 'INCORRECT PASSWORD OR USERNAME.';
 	setcookie('logged', '', time() - 3600);
