@@ -20,6 +20,7 @@ function Signup($name, $email, $password, $organizer){
 	  echo "<script window.location.reload();\n
 			type='text/javascript'>alert('$message'); 
 			 </script>";
+	  exit();
 	  
   }
   
