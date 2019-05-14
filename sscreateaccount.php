@@ -17,11 +17,10 @@ function Signup($name, $email, $password, $organizer){
   $result = $query->execute();
   if($result){
 	  $message = "username have been chosen, please select a new one";
-	  echo "<script window.location.reload();\n
-			type='text/javascript'>alert('$message'); 
+	  echo "<script window.location.reload();</script>";
+	  echo "<script
+			type='text/javascript'>alert('$message');
 			 </script>";
-	  exit();
-	  
   }
   
   // check if the organization have registered for an account
