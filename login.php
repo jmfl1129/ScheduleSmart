@@ -14,37 +14,41 @@ function login($email, $password){
   $q = 'SELECT FROM users WHERE email = :name;';
   $query = $conn->prepare($q);
   $query->bindValue(':name', $email);
-  $result = $query->execute();
-  if(!$result){
+  $query->execute();
+  if($query->rowCount() == 0){
 	  $message = "This email is not validate. Please signup with it or check if the email is wrong";
 	  echo "<script window.location.reload();\n
 			type='text/javascript'>alert('$message'); 
 			 </script>";
   }
   
-  // check for login successful or not
-  $q = 'SELECT FROM users WHERE email = :name AND password = :password;';
-  $query = $conn->prepare($q);
-  $query->bindValue(':name', $email);
-  $query->bindValue(':password', $password);
-  $result = $query->execute();
-  if(!$result){
-	  $message = "Login unsuccessfully";
-	  echo "<script window.location.reload();\n
-			type='text/javascript'>alert('$message'); 
-			 </script>";
-  }
   else{
-	while($row = $query->fetch(\PDO::FETCH_ASSOC)){
-		setcookie('logged', '', time() - 3600);
-		setcookie('email', '', time() - 3600);
-		setcookie('id', '', time() - 3600);
-		setcookie('logged', 'true', time() + (86400 * 30), "/");
-		setcookie('email', $email, time() + (86400 * 30) , "/");
-		setcookie('id', $row['id'], time() + (86400 * 30) , "/");
-		header('Location: index.php'); 
-	}
-	  
+  
+	  // check for login successful or not
+	  $q = 'SELECT * FROM users WHERE email = :name AND password = :password;';
+	  $query = $conn->prepare($q);
+	  $query->bindValue(':name', $email);
+	  $query->bindValue(':password', $password);
+	  $query->execute();
+	  if($query->rowCount() == 0){
+		  $message = "Login unsuccessfully";
+		  echo "<script window.location.reload();\n
+				type='text/javascript'>alert('$message'); 
+				 </script>";
+	  }
+	  else{
+		while($row = $query->fetch(\PDO::FETCH_ASSOC)){
+			setcookie('logged', '', time() - 3600);
+			setcookie('email', '', time() - 3600);
+			setcookie('id', '', time() - 3600);
+			setcookie('logged', 'true', time() + (86400 * 30), "/");
+			setcookie('email', $email, time() + (86400 * 30) , "/");
+			setcookie('id', $row['id'], time() + (86400 * 30) , "/");
+			header('Location: index.php'); 
+		}
+		  
+	  }
+  
   }
 }
 

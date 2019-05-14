@@ -11,13 +11,11 @@ function Signup($name, $email, $password, $organizer){
     ));
 	
   // check if the username have been used
-  $q = 'SELECT FROM users WHERE name = :name;';
+  $q = 'SELECT * FROM users WHERE name = :name;';
   $query = $conn->prepare($q);
   $query->bindValue(':name', $name);
   $query->execute();
-  $result1 = $query->fetch(\PDO::FETCH_ASSOC);
-  echo $result1;
-  if($result1 = $query->fetch(\PDO::FETCH_ASSOC)){
+  if(($result1 = $query->rowCount()) > 0){
 	  $message = "username have been chosen, please select a new one";
 	  echo "<script
 	         type='text/javascript'>alert('$message');
@@ -25,11 +23,11 @@ function Signup($name, $email, $password, $organizer){
   }
   
   // check if the organization have registered for an account
-  $q = 'SELECT FROM users WHERE organizer = :name;';
+  $q = 'SELECT * FROM users WHERE organizer = :name;';
   $query = $conn->prepare($q);
   $query->bindValue(':name', $organizer);
   $query->execute();
-  if($result2 = $query->fetch(\PDO::FETCH_ASSOC)){
+  if(($result2 = $query->rowCount()) > 0){
 	  $message = "The organization already have a organizer, please ask to cofirm for your signup. Only one account for one organization.";
 	  echo "<script
 			type='text/javascript'>alert('$message'); 
@@ -37,11 +35,11 @@ function Signup($name, $email, $password, $organizer){
   }
 	
   // check if the email have been used to register an account
-  $q = 'SELECT FROM users WHERE email = :name;';
+  $q = 'SELECT * FROM users WHERE email = :name;';
   $query = $conn->prepare($q);
   $query->bindValue(':name', $email);
   $query->execute();
-  if($result3 = $query->fetch(\PDO::FETCH_ASSOC)){
+  if(($result3 = $query->rowCount()) > 0){
 	  $message = "This email have been used to register an account. Please use another one to register or we may send you the password through forget password button";
 	  echo "<script
 			type='text/javascript'>alert('$message'); 
