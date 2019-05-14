@@ -26,12 +26,13 @@ function Signup($name, $email, $password, $organizer){
     header('Location: login.php');
   }
   if($result){
+	setcookie('logged', '', time() - 3600);
+    setcookie('email', '', time() - 3600);
+	setcookie('id', '', time() - 3600);
     setcookie('logged', 'true', time() + (86400 * 30), "/");
     setcookie('email', $email, time() + (86400 * 30) , "/");
 	setcookie('id', $conn->lastInsertId(), time() + (86400 * 30) , "/");
-	echo $_COOKIE['id'];
-	echo $conn->lastInsertId();
-	echo $result;
+	header('Location: index.php');
   }
 }
 
