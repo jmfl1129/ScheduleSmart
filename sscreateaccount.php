@@ -19,7 +19,7 @@ function Signup($name, $email, $password, $organizer){
   $sql->bindValue(':email', $email);
   $result = $sql->execute();
   $counter = 0;
-  while ($row = $pg_fetch_array($result)){
+  while ($row = pg_fetch_assoc($result)){
 	$counter++;
     setcookie('logged', 'true', time() + (86400 * 30), "/");
     setcookie('email', $email, time() + (86400 * 30) , "/");
