@@ -1,4 +1,50 @@
 <?php
+function login($email, $password){
+	$id = 1;
+	$organizer = "String";
+	$name = "string";
+	$eventid = "string";
+  $db = parse_url(getenv("DATABASE_URL"));
+  /*$conn = new PDO("pgsql:" . sprintf(
+    "host=%s;port=%s;user=%s;password=%s;dbname=%s",
+    $db["host"],
+    $db["port"],
+    $db["user"],
+    $db["pass"],
+    ltrim($db["path"], "/")
+    ));*/
+	$conn = mysqli_connect("localhost", "localadmin", "admin", "ScheduleSmart") or die ("cannot connect");
+  $q = 'SELECT * FROM users WHERE email=? AND password=?';
+  $sql = $conn->prepare($q);
+  $sql->bind_param("ss", $email, $password);
+  $sql->execute();
+  $result = $sql->get_result();
+  $counter = 0;
+  /*while ($row = $sql->fetch(\PDO::FETCH_ASSOC)){
+	$counter += 1;
+    setcookie('logged', 'true', time() + (86400 * 30), "/");
+    setcookie('email', $email, time() + (86400 * 30) , "/");
+	setcookie('id', $row['id'], time() + (86400 * 30) , "/");
+	header('Location: index.php');
+  }*/
+  while ($row = $result->fetch_assoc()) {
+	$counter += 1;
+    setcookie('logged', 'true', time() + (86400 * 30), "/");
+    setcookie('email', $email, time() + (86400 * 30) , "/");
+	setcookie('id', $row['id'], time() + (86400 * 30) , "/");
+	setcookie('name', $row['name'], time() + (86400 * 30) , "/");
+	header('Location: index.php');
+  }
+  if($counter == 0){
+    $_SESSION['error'] = 'INCORRECT PASSWORD OR USERNAME.';
+	echo $_SESSION['error'];
+  }
+}
+
+session_start();
+if (isset($_POST['login'])){
+    login(htmlspecialchars($_POST['email']), htmlspecialchars($_POST['password']));
+}
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +72,7 @@
 	<!-- navigation bar on top -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container">
-    <a class="navbar-brand" href="organizer/myevents.php">ScheduleSmart Org</a>
+    <a class="navbar-brand" href="/ScheduleSmart/organizer/myevents.php">ScheduleSmart Org</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -47,7 +93,7 @@
           <a class="nav-link" href="#">Contact</a>
         </li>
 		<li class="nav-item">
-		  <a class="nav-link" href="login.php">Sign in</a>
+		  <a class="nav-link" href="/schedulesmart/login.php">Sign in</a>
 		</li>
       </ul>
     </div>
@@ -56,7 +102,8 @@
 	<br>
 	<br>
 	<!-- END OF navigation bar on top -->
-
+	
+	
 <div class="container">
 
   <!-- Page Heading -->
@@ -75,26 +122,26 @@
 		
 
 		<!-- form used to log in -->
-	<form class="form-signin">
+	<form method="POST" action="login.php" class="form-signin">
 	<h5> Please enter your email address and password </h5>
 	<br>
 	  <div class="form-group col-sm-5">
 	    <label for="inputEmail"></label>
-	    <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Email address">
+	    <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Email address">
 	  </div>
 	  <div class="form-group col-sm-5">
 	    <label for="inputPassword"></label>
-	    <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+	    <input type="password" class="form-control" name="password" placeholder="Password">
 	  </div>
 	  <br>
 	  <br>
-	  <button type="submit" class="btn btn-lg btn-primary btn-block text-uppercase col-sm-5">Submit</button>
+	  <button type="submit" name= "login" class="btn btn-lg btn-primary btn-block text-uppercase col-sm-5" >Submit</button>
 	  <br>
 	  <a class="btn btn-lg btn-primary btn-block text-uppercase col-sm-5" href = "/ScheduleSmart/sscreateaccount.php">Sign up</a>
 	  <br>
-	  <button class="btn btn-lg btn-google btn-block text-uppercase col-sm-5" type="submit"><i class="fab fa-google mr-2"></i> Sign up with Google</button>
+	  <button class="btn btn-lg btn-google btn-block text-uppercase col-sm-5" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>
 	  <br>
-      <button class="btn btn-lg btn-facebook btn-block text-uppercase col-sm-5" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign up with Facebook</button>
+      <button class="btn btn-lg btn-facebook btn-block text-uppercase col-sm-5" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button>
              
 	</form>
 	<!-- END of form used to log in --></p>
@@ -110,6 +157,8 @@
     
 
     
+
+    	
 
 
 

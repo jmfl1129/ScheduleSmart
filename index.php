@@ -1,4 +1,51 @@
 <?php
+function login($email, $password){
+	$id = 1;
+	$organizer = "String";
+	$name = "string";
+	$eventid = "string";
+  $db = parse_url(getenv("DATABASE_URL"));
+  /*$conn = new PDO("pgsql:" . sprintf(
+    "host=%s;port=%s;user=%s;password=%s;dbname=%s",
+    $db["host"],
+    $db["port"],
+    $db["user"],
+    $db["pass"],
+    ltrim($db["path"], "/")
+    ));*/
+	$conn = mysqli_connect("localhost", "localadmin", "admin", "ScheduleSmart") or die ("cannot connect");
+  $q = 'SELECT * FROM users WHERE email=? AND password=?';
+  $sql = $conn->prepare($q);
+  $sql->bind_param("ss", $email, $password);
+  $sql->execute();
+  $result = $sql->get_result();
+  $counter = 0;
+  /*while ($row = $sql->fetch(\PDO::FETCH_ASSOC)){
+	$counter += 1;
+    setcookie('logged', 'true', time() + (86400 * 30), "/");
+    setcookie('email', $email, time() + (86400 * 30) , "/");
+	setcookie('id', $row['id'], time() + (86400 * 30) , "/");
+	header('Location: index.php');
+  }*/
+  while ($row = $result->fetch_assoc()) {
+	$counter += 1;
+    setcookie('email', $email, time() + (86400 * 30) , "/");
+	setcookie('id', $row['id'], time() + (86400 * 30) , "/");
+	setcookie('name', $row['name'], time() + (86400 * 30) , "/");
+	header('Location: index.php');
+  }
+  if($counter == 0){
+    $_SESSION['error'] = 'INCORRECT PASSWORD OR USERNAME.';
+	echo $_SESSION['error'];
+  }
+}
+
+session_start();
+if(isset($_COOKIE['id'])){
+	
+	
+	
+}
 ?>
 
 
@@ -34,7 +81,7 @@
 	<!-- navigation bar on top -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
 		<div class="container">
-    <a class="navbar-brand" href="organizer/myevents.php">ScheduleSmart Org</a>
+    <a class="navbar-brand" href="/ScheduleSmart/organizer/myevents.php">ScheduleSmart Org</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -51,12 +98,17 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Services</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
-        </li>
 		<li class="nav-item">
-		  <a class="nav-link" href="login.php">Sign in</a>
+		<?php if(isset($_COOKIE['id'])){ ?>
+		  <a class="nav-link" href="/schedulesmart/ualleventlist.php"> <?php echo $_COOKIE['name']; ?> </a>
 		</li>
+		<li>
+		  <a class="nav-link" href="/schedulesmart/logout.php">Log out</a>
+		</li>
+		<?php } else { ?>
+		  <a class="nav-link" href="/schedulesmart/login.php">Sign in</a>
+		</li>
+		<?php } ?>
 		
 		<li>
 			<div class="active-pink-3 active-pink-4">

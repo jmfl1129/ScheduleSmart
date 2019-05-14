@@ -1,4 +1,40 @@
 <?php
+function Signup($name, $email, $password, $organizer){
+	$id = 1;
+  $db = parse_url(getenv("DATABASE_URL"));
+  /*$conn = new PDO("mysql:host=127.0.0.1; port=80; user=localadmin; password=admin; dbname=ScheduleSmart" /*. sprintf(
+    "host=%s;port=%s;user=%s;password=%s;dbname=%s",
+    $db["host"],
+    $db["port"],
+    $db["user"],
+    $db["pass"],
+    ltrim($db["path"], "/")
+    ));*/
+	$conn = mysqli_connect("localhost", "localadmin", "admin", "ScheduleSmart") or die ("cannot connect");
+	
+  $q = 'INSERT INTO users (name, password, organizer, email) VALUES (?, ?, ?, ?);';
+  $sql = $conn->prepare($q);
+  $sql->bind_param("ssss", $name, $password, $organizer, $email);
+  $result = $sql->execute();
+  echo $result;
+  /*$counter = 0;
+  while ($row = $sql->fetch(\PDO::FETCH_ASSOC)){
+	$counter += 1;
+    setcookie('logged', 'true', time() + (86400 * 30), "/");
+    setcookie('email', $email, time() + (86400 * 30) , "/");
+	setcookie('id', $row['id'], time() + (86400 * 30) , "/");
+    header('Location: index.php');
+  }
+  if($counter == 0){
+    $_SESSION['error'] = 'INCORRECT PASSWORD OR USERNAME.';
+    header('Location: login.php');
+  }*/
+}
+
+session_start();
+if (isset($_POST['Signup'])){
+    Signup(htmlspecialchars($_POST['Name']), htmlspecialchars($_POST['Email']),htmlspecialchars($_POST['Password']), htmlspecialchars($_POST['Organizer']));
+}
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +62,7 @@
 	<!-- navigation bar on top -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container">
-    <a class="navbar-brand" href="organizer/myevents.php">ScheduleSmart Org</a>
+    <a class="navbar-brand" href="/ScheduleSmart/organizer/myevents.php">ScheduleSmart Org</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -47,7 +83,7 @@
           <a class="nav-link" href="#">Contact</a>
         </li>
 		<li class="nav-item">
-		  <a class="nav-link" href="login.php">Sign in</a>
+		  <a class="nav-link" href="/schedulesmart/login.php">Sign in</a>
 		</li>
       </ul>
     </div>
@@ -76,28 +112,28 @@
 		
 
 		<!-- form used to log in -->
-	<form class="form-signin">
+	<form method="POST" action="sscreateaccount.php" class="form-signin">
 	<h5> Please enter the following info to Create your account </h5>
 	<br>
 	  <div class="form-group">
 	    <label for="inputName"></label>
-	    <input type="text" class="form-control" id="inputName" placeholder=" Your username shown to everybody here: ">
+	    <input type="text" class="form-control" id="inputName" name="Name" placeholder=" Your username shown to everybody here: ">
 	  </div>
 	  <div class="form-group">
 	    <label for="inputEmail"></label>
-	    <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Email address">
+	    <input type="email" class="form-control" id="inputEmail" name="Email"    aria-describedby="emailHelp" placeholder="Email address">
 	  </div>
 	  <div class="form-group">
 	    <label for="inputPassword"></label>
-	    <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+	    <input type="password" class="form-control" id="inputPassword" name="Password" placeholder="Password">
 	  </div>
 	  <div class="form-group">
 	    <label for="inputOrganizer"></label>
-	    <input type="text" class="form-control" id="inputOrganizer" placeholder="Organizer name here, leave it blank if you aren't">
+	    <input type="text" class="form-control" id="inputOrganizer" name="Organizer" placeholder="Organizer name here, leave it blank if you aren't">
 	  </div>
 	  <br>
 	  <br>
-	  <button type="submit" class="btn btn-lg btn-primary btn-block text-uppercase">Sign up</button>
+	  <button type="submit" name="Signup" class="btn btn-lg btn-primary btn-block text-uppercase">Sign up</button>
 	  <br>
 	  <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign up with Google</button>
 	  <br>
