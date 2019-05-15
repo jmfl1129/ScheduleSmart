@@ -80,7 +80,6 @@ function Signup($name, $email, $password, $organizer){
 		setcookie('logged', 'true', time() + (86400 * 30), "/");
 		setcookie('email', $email, time() + (86400 * 30) , "/");
 		setcookie('id', $conn->lastInsertId(), time() + (86400 * 30) , "/");
-		
 		header('Location: index.php');
 	  }
   

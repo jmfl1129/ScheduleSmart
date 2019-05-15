@@ -42,10 +42,12 @@ function login($email, $password){
 			setcookie('email', '', time() - 3600);
 			setcookie('id', '', time() - 3600);
 			setcookie('name', '', time() - 3600);
+			setcookie('organizer', '', time() - 3600);
 			setcookie('logged', 'true', time() + (86400 * 30), "/");
 			setcookie('email', $email, time() + (86400 * 30) , "/");
 			setcookie('id', $row['id'], time() + (86400 * 30) , "/");
 			setcookie('name', $row['name'], time() + (86400 * 30) , "/");
+			setcookie('organizer', $row['organizer'], time() + (86400 * 30) , "/");
 			header('Location: index.php'); 
 		}
 		  

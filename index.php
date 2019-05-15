@@ -11,7 +11,7 @@ session_start();
     ));
 	
 
-if(isset($_COOKIE['id']) && !(isset($_COOKIE['name']))){
+if(isset($_COOKIE['id'])){
 	
 	$q = 'SELECT * FROM users WHERE id = :name;';
 	$query = $conn->prepare($q);
@@ -23,7 +23,6 @@ if(isset($_COOKIE['id']) && !(isset($_COOKIE['name']))){
 		setcookie('organizer', '', time() - 3600);
 		setcookie('name', $row['name'], time() + (86400 * 30) , "/");
 		setcookie('organizer', $row['organizer'], time() + (86400 * 30) , "/");
-		header('index.php');
 	}
 }
 ?>
@@ -79,7 +78,7 @@ if(isset($_COOKIE['id']) && !(isset($_COOKIE['name']))){
           <a class="nav-link" href="#">Services</a>
         </li>
 		<?php if(isset($_COOKIE['id'])){ 
-				if(isset($_COOKIE['organizer'])){ 
+				if(isset($_COOKIE['organizer'])){
 		?>
 		<li class="nav-item">
 		  <a class="nav-link" href="organizer/myevents.php"> <?php echo $_COOKIE['name']; ?> </a>
