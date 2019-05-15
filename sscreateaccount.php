@@ -23,7 +23,6 @@ function Signup($name, $email, $password, $organizer){
   }
   
   // check if the organization have registered for an account
-  
   $q = 'SELECT * FROM users WHERE organizer = :name;';
   $query = $conn->prepare($q);
   $query->bindValue(':name', $organizer);
@@ -55,7 +54,6 @@ function Signup($name, $email, $password, $organizer){
 		  $sql->bindValue(':name', $name);
 		  $sql->bindValue(':password', $password);
 		  $sql->bindValue(':email', $email);
-		  echo "abc";
 	  }
 	  else 
 	  {
@@ -65,9 +63,10 @@ function Signup($name, $email, $password, $organizer){
 		  $sql->bindValue(':password', $password);
 		  $sql->bindValue(':organizer', $organizer);
 		  $sql->bindValue(':email', $email);
-		  echo "def";
 	  }
 	  $result = $sql->execute();
+	  echo $result;
+	  echo $sql->execute();
 	  if(!$result){
 		$message = "Internal error";
 		echo "<script
