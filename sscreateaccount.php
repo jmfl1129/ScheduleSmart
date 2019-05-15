@@ -56,7 +56,9 @@ function Signup($name, $email, $password, $organizer){
 	  $sql = $conn->prepare($q);
 	  $sql->bindValue(':name', $name);
 	  $sql->bindValue(':password', $password);
-	  $sql->bindValue(':organizer', $organizer);
+	  if (isset($organizer)){
+		$sql->bindValue(':organizer', $organizer);
+	  }
 	  $sql->bindValue(':email', $email);
 	  $result = $sql->execute();
 	  if(!$result){
