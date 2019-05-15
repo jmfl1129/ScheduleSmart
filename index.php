@@ -79,7 +79,7 @@ if(isset($_COOKIE['id']) && !(isset($_COOKIE['name']))){
           <a class="nav-link" href="#">Services</a>
         </li>
 		<?php if(isset($_COOKIE['id'])){ 
-				if(isset($_COOKIE['organizer')){ 
+				if(isset($_COOKIE['organizer'])){ 
 		?>
 		<li class="nav-item">
 		  <a class="nav-link" href="organizer/myevents.php"> <?php echo $_COOKIE['name']; ?> </a>
