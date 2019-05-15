@@ -141,7 +141,9 @@ if(isset($_COOKIE['id'])){
                     <div class="card-body">
                         <div class="col text-center">
                             <h5 class="card-title">Medicine Fair 2019</h5>
-                            <a href="#" class="btn btn-primary">Details</a>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+							  Details
+							</button>
                         </div>
                     </div>
                   </div>
@@ -153,7 +155,9 @@ if(isset($_COOKIE['id'])){
                     <div class="card-body">
                         <div class="col text-center">
                             <h5 class="card-title">Meditation @ Learning Garden</h5>
-                            <a href="#" class="btn btn-primary">Details</a>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+							  Details
+							</button>
                         </div>
                     </div>
                   </div>
@@ -172,7 +176,9 @@ if(isset($_COOKIE['id'])){
                     <div class="card-body">
                         <div class="col text-center">
                             <h5 class="card-title">Student Expo</h5>
-                            <a href="#" class="btn btn-primary">Details</a>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+							  Details
+							</button>
                         </div>
                     </div>
                   </div>
@@ -184,7 +190,9 @@ if(isset($_COOKIE['id'])){
                     <div class="card-body">
                         <div class="col text-center">
                             <h5 class="card-title">Basketball with Jo <a class="badge badge-info">Private</a></h5>
-                            <a href="#" class="btn btn-primary">Details</a>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+							  Details
+							</button>
                         </div>
                     </div>
                   </div>
@@ -197,7 +205,9 @@ if(isset($_COOKIE['id'])){
                         <div class="col text-center">              
                             
                             <h5 class="card-title">CUSU Ball <a class="badge badge-info">CUSU</a></h5> 
-                            <a href="#" class="btn btn-primary">Details</a>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+							  Details
+							</button>
                         </div>
                     </div>
                   </div>
@@ -258,8 +268,7 @@ if(isset($_COOKIE['id'])){
 </div>
 
 <!-- reference startbootstrap.com/snippets/full-image-background/
-	 startbootstrap.com/snippets/portfolio-four-column/
-	 https://www.phpflow.com/jquery/create-to-create-model-window/
+	 startbootstrap.com/snippets/portfolio-four-column/https://stackoverflow.com/questions/55350639/how-to-open-bootstrap-modal-using-a-button-click
 	 https://mdbootstrap.com/docs/jquery/forms/search/
 -->
 
@@ -287,14 +296,7 @@ if(isset($_COOKIE['id'])){
 </body>
 
 <script type="text/javascript">
-	$(document).ready(function(){
-		var url = "modalbox.php";
-		jQuery('#modellink').click(function(e) {
-	    $('.modal-container').load(url,function(result){
-		$('#myModal').modal({show:true});
-		});
-		});
-	});
+
 </script>
 
 </html>
