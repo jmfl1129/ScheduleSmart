@@ -11,7 +11,7 @@ session_start();
     ));
 	
 
-if(isset($_COOKIE['id'])){
+if(isset($_COOKIE['id']) && !(isset($_COOKIE['name']))){
 	
 	$q = 'SELECT * FROM users WHERE id = :name;';
 	$query = $conn->prepare($q);
@@ -21,9 +21,7 @@ if(isset($_COOKIE['id'])){
 	if($row = $query->fetch(\PDO::FETCH_ASSOC)){
 		setcookie('name', '', time() - 3600);
 		setcookie('name', $row['name'], time() + (86400 * 30) , "/");
-		if(!(isset($_COOKIE['name']))){
-			header('index.php');
-		}
+		header('index.php');
 	}
 }
 ?>
