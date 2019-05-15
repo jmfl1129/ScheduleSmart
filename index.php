@@ -21,7 +21,9 @@ if(isset($_COOKIE['id'])){
 	if($row = $query->fetch(\PDO::FETCH_ASSOC)){
 		setcookie('name', '', time() - 3600);
 		setcookie('name', $row['name'], time() + (86400 * 30) , "/");
-		header('Location: index.php');
+		if(!(isset($_COOKIE['name']))){
+			header('index.php');
+		}
 	}
 }
 ?>
