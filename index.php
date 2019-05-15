@@ -20,7 +20,9 @@ if(isset($_COOKIE['id']) && !(isset($_COOKIE['name']))){
 		  
 	if($row = $query->fetch(\PDO::FETCH_ASSOC)){
 		setcookie('name', '', time() - 3600);
+		setcookie('organizer', '', time() - 3600);
 		setcookie('name', $row['name'], time() + (86400 * 30) , "/");
+		setcookie('organizer', $row['organizer'], time() + (86400 * 30) , "/");
 		header('index.php');
 	}
 }
@@ -76,14 +78,22 @@ if(isset($_COOKIE['id']) && !(isset($_COOKIE['name']))){
         <li class="nav-item">
           <a class="nav-link" href="#">Services</a>
         </li>
+		<?php if(isset($_COOKIE['id'])){ 
+				if(isset($_COOKIE['organizer')){ 
+		?>
 		<li class="nav-item">
-		<?php if(isset($_COOKIE['id'])){ ?>
-		  <a class="nav-link" href="ualleventlist.php"> <?php echo $_COOKIE['name']; ?> </a>
+		  <a class="nav-link" href="organizer/myevents.php"> <?php echo $_COOKIE['name']; ?> </a>
 		</li>
-		<li>
+		<?php }  else { ?>
+		<li class="nav-item">
+		  <a class="nav-link" href="umyevents.php"> <?php echo $_COOKIE['name']; ?> </a>
+		</li>
+		<?php } ?>
+		<li class="nav-item">
 		  <a class="nav-link" href="logout.php">Log out</a>
 		</li>
 		<?php } else { ?>
+		<li class="nav-item">
 		  <a class="nav-link" href="login.php">Sign in</a>
 		</li>
 		<?php } ?>
