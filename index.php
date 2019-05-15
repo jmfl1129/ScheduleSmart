@@ -139,8 +139,7 @@ if(isset($_COOKIE['id'])){
                     <div class="card-body">
                         <div class="col text-center">
                             <h5 class="card-title">Medicine Fair 2019</h5>
-                            <a class="btn btn-primary" data-toggle="modal" href="#myModal" id="modellink">Details</a>
-							<div class="modal-container"></div>
+                            <a href="#" class="btn btn-primary">Details</a>
                         </div>
                     </div>
                   </div>
@@ -152,8 +151,7 @@ if(isset($_COOKIE['id'])){
                     <div class="card-body">
                         <div class="col text-center">
                             <h5 class="card-title">Meditation @ Learning Garden</h5>
-                            <a class="btn btn-primary" data-toggle="modal" href="#myModal" id="modellink">Details</a>
-							<div class="modal-container"></div>
+                            <a href="#" class="btn btn-primary">Details</a>
                         </div>
                     </div>
                   </div>
