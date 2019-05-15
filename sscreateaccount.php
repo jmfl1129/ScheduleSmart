@@ -49,7 +49,7 @@ function Signup($name, $email, $password, $organizer){
   
   if(!$result1 && !$result2 && !$result3){
 	  
-	  $q = 'INSERT INTO users (name, password, organizer, email) VALUES (:name, :password, NULLIF(:organizer,''), :email);';
+	  $q = "INSERT INTO users (name, password, organizer, email) VALUES (:name, :password, NULLIF(:organizer,''), :email);";
 	  $sql = $conn->prepare($q);
 	  $sql->bindValue(':name', $name);
 	  $sql->bindValue(':password', $password);
