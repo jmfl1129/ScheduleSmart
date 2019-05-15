@@ -70,7 +70,7 @@ setcookie('name', '', time() - 3600);
 	
 	<h5> You have logged out </h5>
 	<br>
-	  <a type="button" name="Back to the home page" class="btn btn-lg btn-primary btn-block text-uppercase">Back to the home page</a>
+	  <a type="button" name="Back to the home page" class="btn btn-lg btn-primary btn-block text-uppercase" href="index.php">Back to the home page</a>
 	     
     </div>
   </div>

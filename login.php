@@ -44,6 +44,7 @@ function login($email, $password){
 			setcookie('logged', 'true', time() + (86400 * 30), "/");
 			setcookie('email', $email, time() + (86400 * 30) , "/");
 			setcookie('id', $row['id'], time() + (86400 * 30) , "/");
+			setcookie('name', $row['name'], time() + (86400 * 30) , "/");
 			header('Location: index.php'); 
 		}
 		  
