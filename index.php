@@ -126,8 +126,10 @@ if(isset($_COOKIE['id'])){
                     <div class="card-body">
                         <div class="col text-center">
                             <h5 class="card-title">Chung Chi Chapel Service</h5>
-							<a class="btn btn-primary" data-toggle="modal" href="#myModal" id="modellink">Details</a>
-							<div class="modal-container"></div>
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+							  Details
+							</button>
+
 						</div>
                     </div>
 				  </div>
@@ -260,6 +262,27 @@ if(isset($_COOKIE['id'])){
 	 https://www.phpflow.com/jquery/create-to-create-model-window/
 	 https://mdbootstrap.com/docs/jquery/forms/search/
 -->
+
+
+<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>
 
