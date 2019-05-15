@@ -48,13 +48,24 @@ function Signup($name, $email, $password, $organizer){
   }
   
   if(!$result1 && !$result2 && !$result3){
-	  
-	  $q = "INSERT INTO users (name, password, organizer, email) VALUES (:name, :password, NULLIF(:organizer,''), :email);";
-	  $sql = $conn->prepare($q);
-	  $sql->bindValue(':name', $name);
-	  $sql->bindValue(':password', $password);
-	  $sql->bindValue(':organizer', $organizer);
-	  $sql->bindValue(':email', $email);
+	  if($organizer == '')
+	  {
+		  $q = "INSERT INTO users (name, password, email) VALUES (:name, :password, :email);";
+		  $sql = $conn->prepare($q);
+		  $sql->bindValue(':name', $name);
+		  $sql->bindValue(':password', $password);
+		  $sql->bindValue(':email', $email);
+	  }
+	  else 
+	  {
+		  $q = "INSERT INTO users (name, password, organizer, email) VALUES (:name, :password, :organizer, :email);";
+		  $sql = $conn->prepare($q);
+		  $sql->bindValue(':name', $name);
+		  $sql->bindValue(':password', $password);
+		  $sql->bindValue(':organizer', $organizer);
+		  $sql->bindValue(':email', $email);
+		  
+	  }
 	  $result = $sql->execute();
 	  if(!$result){
 		$message = "Internal error";
