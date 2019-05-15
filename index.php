@@ -1,6 +1,28 @@
 <?php
 session_start();
+	$db = parse_url(getenv("DATABASE_URL"));
+  $conn = new PDO("pgsql:". sprintf(
+    "host=%s;port=%s;user=%s;password=%s;dbname=%s",
+    $db["host"],
+    $db["port"],
+    $db["user"],
+    $db["pass"],
+    ltrim($db["path"], "/")
+    ));
+	
 
+if(isset($_COOKIE['id'])){
+	
+	$q = 'SELECT * FROM users WHERE id = :name;';
+	$query = $conn->prepare($q);
+	$query->bindValue(':name', $_COOKIE['id']);
+	$query->execute();
+		  
+	while($row = $query->fetch(\PDO::FETCH_ASSOC)){
+		setcookie('name', $row['name'], time() + (86400 * 30) , "/");
+		header('Location: index.php');
+	}
+}
 ?>
 
 

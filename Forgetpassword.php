@@ -25,6 +25,10 @@ function SendForgetPasswordEmail($email){
 					Yours faithfully, \r\n
 					ScheduleSmart developer";
 	  mail($email, $subject, $message);
+	  $message = "email is sent";
+	  echo "<script window.location.reload();\n
+			type='text/javascript'>alert('$message'); 
+			 </script>";
   }
   else{
 	  
