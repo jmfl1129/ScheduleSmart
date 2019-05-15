@@ -115,17 +115,18 @@ if(isset($_COOKIE['id'])){
 	  <div class="card border-0 shadow my-5">
 		<div class="card-body p-5">
 		  <h1 class="font-weight-light">Choose what you want</h1>
+		  
 		<div class="card-deck">
             <div class="row justify-content-md-center">
                 <div> <h1>5PM</h1>  </div>
                 
                 <div class="col-3 d-flex align-items-stretch">
                   <div class="card h-200">
-                    <img class="card-img-top" src="images/Picture1.png" alt="Image not found ">
+                    <img class="card-img-top" src="../images/Picture1.png" alt="Image not found ">
                     <div class="card-body">
                         <div class="col text-center">
                             <h5 class="card-title">Chung Chi Chapel Service</h5>
-							<a class="btn btn-primary" data-toggle="modal" href="#myModal" class="modellink" onclick="mclick()">Details</a>
+							<a class="btn btn-primary" data-toggle="modal" href="#myModal" id="modellink">Details</a>
 							<div class="modal-container"></div>
 						</div>
                     </div>
@@ -134,11 +135,11 @@ if(isset($_COOKIE['id'])){
                 
                 <div class="col-3 d-flex align-items-stretch">
                   <div class="card">
-                    <img class="card-img-top" src="images/Picture2.png" alt="Image not found ">
+                    <img class="card-img-top" src="../images/Picture2.png" alt="Image not found ">
                     <div class="card-body">
                         <div class="col text-center">
                             <h5 class="card-title">Medicine Fair 2019</h5>
-                            <a class="btn btn-primary" data-toggle="modal" href="#myModal" class="modellink" onclick="mclick()">Details</a>
+                            <a class="btn btn-primary" data-toggle="modal" href="#myModal" id="modellink">Details</a>
 							<div class="modal-container"></div>
                         </div>
                     </div>
@@ -147,11 +148,11 @@ if(isset($_COOKIE['id'])){
                 
                 <div class="col-3 d-flex align-items-stretch">
                   <div class="card">
-                    <img class="card-img-top" src="images/Picture3.png" alt="Image not found ">
+                    <img class="card-img-top" src="../images/Picture3.png" alt="Image not found ">
                     <div class="card-body">
                         <div class="col text-center">
                             <h5 class="card-title">Meditation @ Learning Garden</h5>
-                            <a class="btn btn-primary" data-toggle="modal" href="#myModal" class="modellink" onclick="mclick()">Details</a>
+                            <a class="btn btn-primary" data-toggle="modal" href="#myModal" id="modellink">Details</a>
 							<div class="modal-container"></div>
                         </div>
                     </div>
@@ -167,11 +168,11 @@ if(isset($_COOKIE['id'])){
                 
                 <div class="col-3">
                   <div class="card h-200">
-                    <img class="card-img-top" src="images/Picture4.png" alt="Image not found ">
+                    <img class="card-img-top" src="../images/Picture4.png" alt="Image not found ">
                     <div class="card-body">
                         <div class="col text-center">
                             <h5 class="card-title">Student Expo</h5>
-                            <a href="#" class="btn btn-primary" onclick=">Details</a>
+                            <a href="#" class="btn btn-primary">Details</a>
                         </div>
                     </div>
                   </div>
@@ -179,7 +180,7 @@ if(isset($_COOKIE['id'])){
                 
                 <div class="col-3">
                   <div class="card h-200">
-                    <img class="card-img-top" src="images/Picture5.png" alt="Image not found ">
+                    <img class="card-img-top" src="../images/Picture5.png" alt="Image not found ">
                     <div class="card-body">
                         <div class="col text-center">
                             <h5 class="card-title">Basketball with Jo <a class="badge badge-info">Private</a></h5>
@@ -191,7 +192,7 @@ if(isset($_COOKIE['id'])){
                 
                 <div class="col-3">
                   <div class="card h-200">
-                    <img class="card-img-top" src="images/Picture6.png" alt="Image not found ">
+                    <img class="card-img-top" src="../images/Picture6.png" alt="Image not found ">
                     <div class="card-body">
                         <div class="col text-center">              
                             
@@ -236,6 +237,14 @@ if(isset($_COOKIE['id'])){
           </a>
     </li>
   </ul>
+  
+		  <div class="row justify-content-md-center">
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="checkOnlyFreeEvents">
+                <label class="form-check-label" for="exampleCheck1">show only events when I'm free</label>
+            </div>     
+        </div>
+		
 
 <!-- /.container -->
   <footer id="sticky-footer" class="py-4 bg-light text-dark-50">
@@ -260,9 +269,9 @@ if(isset($_COOKIE['id'])){
 <script type="text/javascript">
 	$(document).ready(function(){
 		var url = "modalbox.php";
-		function mclick() {
+		jQuery('#modellink').click(function(e) {
 		    $('.modal-container').load(url,function(result){
-				$('#myModal').modal('show');
+				$('#myModal').modal({show:true});
 			});
 		});
 	});
