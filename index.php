@@ -287,7 +287,7 @@ if(isset($_COOKIE['id'])){
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Go back</button>
-        <a type="button" class="btn btn-primary" href="takeaphoto_dude">Join</a>
+        <a type="button" class="btn btn-primary" href="takeaphoto_dude.php">Join</a>
       </div>
     </div>
   </div>
