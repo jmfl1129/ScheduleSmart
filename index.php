@@ -18,7 +18,7 @@ if(isset($_COOKIE['id'])){
 	$query->bindValue(':name', $_COOKIE['id']);
 	$query->execute();
 		  
-	while($row = $query->fetch(\PDO::FETCH_ASSOC)){
+	if($row = $query->fetch(\PDO::FETCH_ASSOC)){
 		setcookie('name', $row['name'], time() + (86400 * 30) , "/");
 		header('Location: index.php');
 	}

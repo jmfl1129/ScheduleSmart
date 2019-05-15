@@ -37,7 +37,7 @@ function login($email, $password){
 				 </script>";
 	  }
 	  else{
-		while($row = $query->fetch(\PDO::FETCH_ASSOC)){
+		if($row = $query->fetch(\PDO::FETCH_ASSOC)){
 			setcookie('logged', '', time() - 3600);
 			setcookie('email', '', time() - 3600);
 			setcookie('id', '', time() - 3600);
