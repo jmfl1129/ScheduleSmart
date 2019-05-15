@@ -1,8 +1,5 @@
 <?php
 function Signup($name, $email, $password, $organizer){
-  if ($organizer == ''){
-	  $organizer = null;
-  }
   $db = parse_url(getenv("DATABASE_URL"));
   $conn = new PDO("pgsql:". sprintf(
     "host=%s;port=%s;user=%s;password=%s;dbname=%s",
@@ -52,13 +49,11 @@ function Signup($name, $email, $password, $organizer){
   
   if(!$result1 && !$result2 && !$result3){
 	  
-	  $q = 'INSERT INTO users (name, password, organizer, email) VALUES (:name, :password, :organizer, :email);';
+	  $q = 'INSERT INTO users (name, password, organizer, email) VALUES (:name, :password, NULLIF(:organizer,''), :email);';
 	  $sql = $conn->prepare($q);
 	  $sql->bindValue(':name', $name);
 	  $sql->bindValue(':password', $password);
-	  if (isset($organizer)){
-		$sql->bindValue(':organizer', $organizer);
-	  }
+	  $sql->bindValue(':organizer', $organizer);
 	  $sql->bindValue(':email', $email);
 	  $result = $sql->execute();
 	  if(!$result){
