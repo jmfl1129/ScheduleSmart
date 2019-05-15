@@ -57,11 +57,10 @@ function Signup($name, $email, $password, $organizer){
 	  $sql->bindValue(':email', $email);
 	  $result = $sql->execute();
 	  if(!$result){
-		$_SESSION['error'] = 'INCORRECT PASSWORD OR USERNAME.';
-		setcookie('logged', '', time() - 3600);
-		setcookie('email', '', time() - 3600);
-		setcookie('id', '', time() - 3600);
-		header('Location: login.php');
+		$message = "Internal error";
+		echo "<script
+			type='text/javascript'>alert('$message'); 
+			 </script>";
 	  }
 	  if($result){
 		setcookie('logged', '', time() - 3600);
