@@ -1,5 +1,8 @@
 <?php
 function Signup($name, $email, $password, $organizer){
+  if ($organizer == ''){
+	  $organizer = null;
+  }
   $db = parse_url(getenv("DATABASE_URL"));
   $conn = new PDO("pgsql:". sprintf(
     "host=%s;port=%s;user=%s;password=%s;dbname=%s",
@@ -23,6 +26,7 @@ function Signup($name, $email, $password, $organizer){
   }
   
   // check if the organization have registered for an account
+  
   $q = 'SELECT * FROM users WHERE organizer = :name;';
   $query = $conn->prepare($q);
   $query->bindValue(':name', $organizer);
