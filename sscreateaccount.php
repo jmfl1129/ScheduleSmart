@@ -55,6 +55,7 @@ function Signup($name, $email, $password, $organizer){
 		  $sql->bindValue(':name', $name);
 		  $sql->bindValue(':password', $password);
 		  $sql->bindValue(':email', $email);
+		  echo "abc";
 	  }
 	  else 
 	  {
@@ -64,7 +65,7 @@ function Signup($name, $email, $password, $organizer){
 		  $sql->bindValue(':password', $password);
 		  $sql->bindValue(':organizer', $organizer);
 		  $sql->bindValue(':email', $email);
-		  
+		  echo "def";
 	  }
 	  $result = $sql->execute();
 	  if(!$result){
