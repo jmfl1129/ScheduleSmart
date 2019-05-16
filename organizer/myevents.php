@@ -119,7 +119,7 @@ session_start();
 			
 			$j = 0;
 			
-			while($row = $query->fetch(\PDO::FETCH_ASSOC) && $j < 3){
+			while(($row = $query->fetch(\PDO::FETCH_ASSOC)) && $j < 3){
 				echo var_dump($row);
 				echo $row['photolink'];
 				echo $row['ename'];
@@ -154,7 +154,7 @@ session_start();
             <div class="row justify-content-md-center">
                 <div> <h1>row 2</h1>  </div>
                 
-				<?php while($row = $query->fetch(\PDO::FETCH_ASSOC) && $j < 6){
+				<?php while(($row = $query->fetch(\PDO::FETCH_ASSOC)) && $j < 6){
 				
 				?>
 				
