@@ -1,5 +1,5 @@
 <?php
-function Signup($name, $email, $password, $organizer){
+function CreateEvent($ename, $edate, $eduration, $etime, $elocation, $etype, $edescription, $evacancies, $ephoto_url){
   $db = parse_url(getenv("DATABASE_URL"));
   $conn = new PDO("pgsql:". sprintf(
     "host=%s;port=%s;user=%s;password=%s;dbname=%s",
@@ -10,63 +10,30 @@ function Signup($name, $email, $password, $organizer){
     ltrim($db["path"], "/")
     ));
 	
-  // check if the username have been used
-  $q = 'SELECT * FROM users WHERE name = :name;';
-  $query = $conn->prepare($q);
-  $query->bindValue(':name', $name);
-  $query->execute();
-  if(($result1 = $query->rowCount()) > 0){
-	  $message = "username have been chosen, please select a new one";
-	  echo "<script
-	         type='text/javascript'>alert('$message');
-			 </script>";
-  }
+	if($etype == 'private')
+	  $etype = $_COOKIE['organizer'];
   
-  // check if the organization have registered for an account
-  $q = 'SELECT * FROM users WHERE organizer = :name;';
-  $query = $conn->prepare($q);
-  $query->bindValue(':name', $organizer);
-  $query->execute();
-  if(($result2 = $query->rowCount()) > 0){
-	  $message = "The organization already have a organizer, please ask to cofirm for your signup. Only one account for one organization.";
-	  echo "<script
-			type='text/javascript'>alert('$message'); 
-			 </script>";
-  }
-	
-  // check if the email have been used to register an account
-  $q = 'SELECT * FROM users WHERE email = :name;';
-  $query = $conn->prepare($q);
-  $query->bindValue(':name', $email);
-  $query->execute();
-  if(($result3 = $query->rowCount()) > 0){
-	  $message = "This email have been used to register an account. Please use another one to register or we may send you the password through forget password button";
-	  echo "<script
-			type='text/javascript'>alert('$message'); 
-			 </script>";
-  }
+	if(!(isset($url_name_generator)))
+	  $url_name_generator = 0;
   
-  if(!$result1 && !$result2 && !$result3){
-	  if($organizer == '')
-	  {
-		  $q = "INSERT INTO users (name, password, email) VALUES (:name, :password, :email);";
-		  $sql = $conn->prepare($q);
-		  $sql->bindValue(':name', $name);
-		  $sql->bindValue(':password', $password);
-		  $sql->bindValue(':email', $email);
-	  }
-	  else 
-	  {
-		  $q = "INSERT INTO users (name, password, organizer, email) VALUES (:name, :password, :organizer, :email);";
-		  $sql = $conn->prepare($q);
-		  $sql->bindValue(':name', $name);
-		  $sql->bindValue(':password', $password);
-		  $sql->bindValue(':organizer', $organizer);
-		  $sql->bindValue(':email', $email);
-	  }
+	  $data = file_get_contents($ephoto_url);
+	  $name = (string) $url_name_generator;
+	  $new = "../images/Generatedphoto${name}.png";
+	  file_put_contents($new, $data);
+	  $url_name_generator++;
+
+	  $q = "INSERT INTO events (ename, abstract, photolink, type, venue, time, vacancies, duration, date) VALUES (:ename, :edescription, :ephoto_url, :etype, :elocation, :etime, :evacancies, :eduration, :edate);";
+	  $sql = $conn->prepare($q);
+	  $sql->bindValue(':ename', $ename);
+	  $sql->bindValue(':edescription', $edescription);
+	  $sql->bindValue(':ephoto_url', $new);
+	  $sql->bindValue(':etype', $etype);
+	  $sql->bindValue(':elocation', $elocation);
+	  $sql->bindValue(':etime', $etime);
+	  $sql->bindValue(':evacancies', $evacancies);
+	  $sql->bindValue(':eduration', $eduration);
+	  $sql->bindValue(':edate', $edate);
 	  $result = $sql->execute();
-	  echo $result;
-	  echo $sql->execute();
 	  if(!$result){
 		$message = "Internal error";
 		echo "<script
@@ -74,21 +41,19 @@ function Signup($name, $email, $password, $organizer){
 			 </script>";
 	  }
 	  if($result){
-		setcookie('logged', '', time() - 3600);
-		setcookie('email', '', time() - 3600);
-		setcookie('id', '', time() - 3600);
-		setcookie('logged', 'true', time() + (86400 * 30), "/");
-		setcookie('email', $email, time() + (86400 * 30) , "/");
-		setcookie('id', $conn->lastInsertId(), time() + (86400 * 30) , "/");
-		header('Location: index.php');
+		$message = "Event created";
+		echo "<script
+			type='text/javascript'>alert('$message'); 
+			 </script>";
+		header('Location: myevents.php');
 	  }
   
   }
 }
 
 session_start();
-if (isset($_POST['Signup'])){
-    Signup(htmlspecialchars($_POST['Name']), htmlspecialchars($_POST['Email']),htmlspecialchars($_POST['Password']), htmlspecialchars($_POST['Organizer']));
+if (isset($_POST['Done'])){
+    CreateEvent(htmlspecialchars($_POST['ename']), htmlspecialchars($_POST['edate']),htmlspecialchars($_POST['eduration']), htmlspecialchars($_POST['etime']), htmlspecialchars($_POST['elocation']), htmlspecialchars($_POST['etype']), htmlspecialchars($_POST['edescription']), htmlspecialchars($_POST['evacancies']), htmlspecialchars($_POST['ephoto_url']));
 }
 ?>
 
@@ -117,7 +82,7 @@ if (isset($_POST['Signup'])){
 	<!-- navigation bar on top -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container">
-    <a class="navbar-brand" href="index.php">ScheduleSmart Org</a>
+    <a class="navbar-brand" href="../index.php">ScheduleSmart Org</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -197,10 +162,22 @@ if (isset($_POST['Signup'])){
 		
 		<label  for="edescription"><b>Description</b></label>
 		<div class="form-group col-sm-5"> 
-			<input type="text" class="form-control" placeholder="Enter Event Description" name="edescription">
+			<input type="text" class="form-control" placeholder="Enter Event Description" name="edescription" required>
 		</div>
 		<br>
-		<button type="submit" class="btn btn-lg btn-primary btn-block text-uppercase col-sm-5">Done</button>
+		
+		<label  for="evacancies"><b>Vacancies</b></label>
+		<div class="form-group col-sm-5"> 
+			<input type="number" class="form-control" placeholder="Enter vacancies" name="evacancies" required>
+		</div>
+		<br>
+		
+		<label  for="ephoto_url"><b>Photo url</b></label>
+		<div class="form-group col-sm-5"> 
+			<input type="text" class="form-control" placeholder="Enter Image URL" name="ephoto_url"required>
+		</div>
+		<br>
+		<button type="submit" name="Done" class="btn btn-lg btn-primary btn-block text-uppercase col-sm-5">Done</button>
 	  
 	</form>
 	<!-- END of form used to log in --></p>

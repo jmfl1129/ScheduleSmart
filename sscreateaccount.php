@@ -65,8 +65,6 @@ function Signup($name, $email, $password, $organizer){
 		  $sql->bindValue(':email', $email);
 	  }
 	  $result = $sql->execute();
-	  echo $result;
-	  echo $sql->execute();
 	  if(!$result){
 		$message = "Internal error";
 		echo "<script
