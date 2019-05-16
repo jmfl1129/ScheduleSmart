@@ -35,8 +35,8 @@ if(isset($_COOKIE['id'])){
 	
 	
 
-include '/organizer/getContent.php';
-include '/organizer/pages.php';
+include 'getContent.php';
+include 'pages.php';
 ?>
 
 
