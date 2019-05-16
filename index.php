@@ -154,8 +154,6 @@ include '/organizer/pages.php';
 			
 			while(($row = $query->fetch(\PDO::FETCH_ASSOC)) && $j < 3){
 				if(isset($_POST['Search'])){
-					echo $row['ename'];
-					echo $_POST['Search'];
 					if($row['ename'] == $_POST['Search']) {
 				
 			
@@ -284,7 +282,7 @@ include '/organizer/pages.php';
             <div class="row justify-content-md-center">
                 <div> <h1>row 2</h1>  </div>
 				
-				<?php if($row) { ?>
+				<?php if($row && !(isset($_POST['Search']))) { ?>
 				<div class="col-3 d-flex align-items-stretch">
                   <div class="card h-200">
                     <img class="card-img-top" src= <?php echo  "'". $row['photolink'] . "'"; ?> alt="Image not found ">
@@ -335,18 +333,24 @@ include '/organizer/pages.php';
                 
 				<?php } ?>
 				
-				<?php while(($row = $query->fetch(\PDO::FETCH_ASSOC)) && $j < 5){
+				<?php 
+			
+			while(($row = $query->fetch(\PDO::FETCH_ASSOC)) && $j < 5){
+				if(isset($_POST['Search'])){
+					if($row['ename'] == $_POST['Search']) {
 				
-				?>
-				
-				<div class="col-3 d-flex align-items-stretch">
+			
+		?>
+		
+                
+                <div class="col-3 d-flex align-items-stretch">
                   <div class="card h-200">
-                    <img class="card-img-top" src= <?php echo  "'". $row['photolink'] . "'"; ?> alt="Image not found ">
+                    <img class='card-img-top' src= <?php echo "'". $row['photolink'] . "'"; ?> alt="Image not found ">
                     <div class="card-body">
                         <div class="col text-center">
                             <h5 class="card-title"><?php echo $row['ename']; ?>
 							<?php if($row['type'] != 'public') { ?>
-							<a class="badge badge-info"><?php echo $row['type']; ?></a> <?php } ?></h5>
+							<a class="badge badge-info"><?php echo $row['type']; ?></a> <?php } ?> </h5>
 							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal<?php echo $row['id']; ?>">
 							  Details
 							</button>
@@ -355,7 +359,6 @@ include '/organizer/pages.php';
                     </div>
 				  </div>
                 </div>
-				
 				
 				<!-- Modal -->
 				<div class="modal" id="exampleModal<?php echo $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -387,9 +390,73 @@ include '/organizer/pages.php';
 					</div>
 				  </div>
 				</div>
+				
+					<?php 	
+					
+					break;
+					}
+				}
+				
+				else { ?>
+					
+                
+                <div class="col-3 d-flex align-items-stretch">
+                  <div class="card h-200">
+                    <img class='card-img-top' src= <?php echo "'". $row['photolink'] . "'"; ?> alt="Image not found ">
+                    <div class="card-body">
+                        <div class="col text-center">
+                            <h5 class="card-title"><?php echo $row['ename']; ?>
+							<?php if($row['type'] != 'public') { ?>
+							<a class="badge badge-info"><?php echo $row['type']; ?></a> <?php } ?> </h5>
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal<?php echo $row['id']; ?>">
+							  Details
+							</button>
 
-			<?php $j++;
-			} ?>
+						</div>
+                    </div>
+				  </div>
+                </div>
+				
+				<!-- Modal -->
+				<div class="modal" id="exampleModal<?php echo $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+					<div class="modal-content">
+					  <div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Event details</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						  <span aria-hidden="true">×</span>
+						</button>
+					  </div>
+					  <div class="modal-body">
+						
+								<?php echo '<h4>'.$row['ename'].'</h4>';
+									  echo '<p> abstract: '.$row['abstract'].'</p>';
+									  echo '<img src= \''. $row['photolink'].'\'>';
+									  echo '<p> type: '.$row['type'].'</p>';
+									  echo '<p> venue: '.$row['venue'].'</p>';
+									  echo '<p> time: '.$row['time'].'</p>';
+									  echo '<p> vacancies: '.$row['vacancies'].'</p>';
+									  echo '<p> duration: '.$row['duration'].'</p>';
+									  echo '<p> date: '.$row['date'].'</p>';
+								?>
+					  </div>
+					  <div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Go back</button>
+						<a type="button" class="btn btn-primary" href="takeaphoto_dude.php">Join</a>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			<?php
+				
+				
+			
+			$j++;
+			
+				}
+			}
+
+			?>
 			
             </div>
             
