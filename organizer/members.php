@@ -25,16 +25,16 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item ">
-          <a class="nav-link" href="/schedulesmart/organizer/myevents.php">My events</a>
+          <a class="nav-link" href="myevents.php">My events</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/schedulesmart/organizer/createevent.php">Create event</a>
+          <a class="nav-link" href="createevent.php">Create event</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="/schedulesmart/organizer/members.php">Members<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="members.php">Members<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/schedulesmart/organizer/options.php">Options</a>
+          <a class="nav-link" href="options.php">Options</a>
         </li>
       </ul>
     </div>
