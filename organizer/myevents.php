@@ -14,6 +14,12 @@ session_start();
 	$query = $conn->prepare($q);
 	$query->bindValue(':name', $_COOKIE['organizer']);
 	$query->execute();
+	
+	
+
+include 'getContent.php';
+include 'pages.php';
+
 		  
 	
 ?>
@@ -284,13 +290,6 @@ session_start();
 </div>
 
 </body>
-
-<?php
-
-include 'getContent.php';
-include 'pages.php';
-
-?>
 
 <script type="text/javascript">
 	$(document).ready(function(){
