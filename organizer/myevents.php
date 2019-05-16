@@ -149,8 +149,24 @@ session_start();
             <!-- second row of events at a different t ime -->
             <div class="row justify-content-md-center">
                 <div> <h1>row 2</h1>  </div>
+				
+				
+				<div class="col-3 d-flex align-items-stretch">
+                  <div class="card h-200">
+                    <img class="card-img-top" src= <?php echo  "'..". $row['photolink'] . "'"; ?> alt="Image not found ">
+                    <div class="card-body">
+                        <div class="col text-center">
+                            <h5 class="card-title"><?php echo $row['ename']; ?>
+							<?php if($row['type'] != 'public') { ?>
+							<a class="badge badge-info"><?php echo $row['type']; ?></a> <?php } ?></h5>
+							<a href="javascript:void(0);" data-href=<?php echo"getContent.php?id=${row['id']}"; ?> class="openPopup">Details</a>
+
+						</div>
+                    </div>
+				  </div>
+                </div>
                 
-				<?php while(($row = $query->fetch(\PDO::FETCH_ASSOC)) && $j < 6){
+				<?php while(($row = $query->fetch(\PDO::FETCH_ASSOC)) && $j < 5){
 				
 				?>
 				
