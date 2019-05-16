@@ -108,6 +108,7 @@ session_start();
                 <div class="col-3 d-flex align-items-stretch">
                   <div class="card h-200">
                     <img class="card-img-top" src="../images/Picture1.png" alt="Image not found ">
+					<img src="../images/Generatedphoto0.png" alt="" width="500" height="333">
                     <div class="card-body">
                         <div class="col text-center">
                             <h5 class="card-title">Chung Chi Chapel Service</h5>
