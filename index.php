@@ -154,6 +154,8 @@ include '/organizer/pages.php';
 			
 			while(($row = $query->fetch(\PDO::FETCH_ASSOC)) && $j < 3){
 				if(isset($_POST['Search'])){
+					echo $row['ename'];
+					echo $_POST['Search'];
 					if($row['ename'] == $_POST['Search']) {
 				
 			
