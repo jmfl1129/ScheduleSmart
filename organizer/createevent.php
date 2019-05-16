@@ -26,7 +26,7 @@ function CreateEvent($ename, $edate, $eduration, $etime, $elocation, $etype, $ed
 	  $sql = $conn->prepare($q);
 	  $sql->bindValue(':ename', $ename);
 	  $sql->bindValue(':edescription', $edescription);
-	  $sql->bindValue(':ephoto_url', $new);
+	  $sql->bindValue(':ephoto_url', $ephoto_url);
 	  $sql->bindValue(':etype', $etype);
 	  $sql->bindValue(':elocation', $elocation);
 	  $sql->bindValue(':etime', $etime);
