@@ -10,6 +10,12 @@ session_start();
     ltrim($db["path"], "/")
     ));
 	
+	$q = "SELECT * FROM events WHERE type = :name OR type = 'public';";
+	$query = $conn->prepare($q);
+	$query->bindValue(':name', $_COOKIE['organizer']);
+	$query->execute();
+		  
+	
 ?>
 
 
@@ -101,106 +107,71 @@ session_start();
 		<div class="card-body p-5">
 		  <h1 class="font-weight-light">Choose what you want</h1>
 		  
+		  
 		<div class="card-deck">
             <div class="row justify-content-md-center">
-                <div> <h1>5PM</h1>  </div>
+                <div> <h1>row 1</h1>  </div>
+		  
+		<?php 
+			for ($i = 0; $i < ($_SESSION['page'] - 1) * 6; $i++){
+				$row = $query->fetch(\PDO::FETCH_ASSOC);
+			}
+			
+			$j = 0;
+			
+			while($row = $query->fetch(\PDO::FETCH_ASSOC) && $j < 3){
+				
+		
+		?>
+		
                 
                 <div class="col-3 d-flex align-items-stretch">
                   <div class="card h-200">
-                    <img class="card-img-top" src="../images/Picture1.png" alt="Image not found ">
-					<img src="https://image.shutterstock.com/z/stock-photo-beautiful-pink-flowers-anemones-and-ladybug-in-spring-nature-outdoors-against-blue-sky-macro-soft-1020162208.jpg" alt="" width="500" height="333">
+                    <img class="card-img-top" src= <?php echo $row['photolink']; ?> alt="Image not found ">
                     <div class="card-body">
                         <div class="col text-center">
-                            <h5 class="card-title">Chung Chi Chapel Service</h5>
-							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-							  Details
-							</button>
+                            <h5 class="card-title"><?php echo $row['ename']; ?>
+							<?php if($row['type'] != 'public') { ?>
+							<a class="badge badge-info"><?php echo $row['type']; ?></a> <?php } ?>/h5>
+							<a href="javascript:void(0);" data-href=<?php echo"getContent.php?id=${row['id']}"; ?> class="openPopup">Details</a>
 
 						</div>
                     </div>
 				  </div>
                 </div>
-                
-                <div class="col-3 d-flex align-items-stretch">
-                  <div class="card">
-                    <img class="card-img-top" src="../images/Picture2.png" alt="Image not found ">
-                    <div class="card-body">
-                        <div class="col text-center">
-                            <h5 class="card-title">Medicine Fair 2019</h5>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-							  Details
-							</button>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="col-3 d-flex align-items-stretch">
-                  <div class="card">
-                    <img class="card-img-top" src="../images/Picture3.png" alt="Image not found ">
-                    <div class="card-body">
-                        <div class="col text-center">
-                            <h5 class="card-title">Meditation @ Learning Garden</h5>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-							  Details
-							</button>
-                        </div>
-                    </div>
-                  </div>
-                </div>
+				
+			<?php $j++;
+			}; ?>
+			
             </div>
-            
             <br>    
             
             <!-- second row of events at a different t ime -->
             <div class="row justify-content-md-center">
-                <div> <h1>6PM</h1>  </div>
+                <div> <h1>row 2</h1>  </div>
                 
-                <div class="col-3">
+				<?php while($row = $query->fetch(\PDO::FETCH_ASSOC) && $j < 6){
+				
+				?>
+				
+				<div class="col-3 d-flex align-items-stretch">
                   <div class="card h-200">
-                    <img class="card-img-top" src="../images/Picture4.png" alt="Image not found ">
+                    <img class="card-img-top" src= <?php echo $row['photolink']; ?> alt="Image not found ">
                     <div class="card-body">
                         <div class="col text-center">
-                            <h5 class="card-title">Student Expo</h5>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-							  Details
-							</button>
-                        </div>
+                            <h5 class="card-title"><?php echo $row['ename']; ?>
+							<?php if($row['type'] != 'public') { ?>
+							<a class="badge badge-info"><?php echo $row['type']; ?></a> <?php } ?>/h5>
+							<a href="javascript:void(0);" data-href=<?php echo"getContent.php?id=${row['id']}"; ?> class="openPopup">Details</a>
+
+						</div>
                     </div>
-                  </div>
-                </div>     
-                
-                <div class="col-3">
-                  <div class="card h-200">
-                    <img class="card-img-top" src="../images/Picture5.png" alt="Image not found ">
-                    <div class="card-body">
-                        <div class="col text-center">
-                            <h5 class="card-title">Basketball with Jo <a class="badge badge-info">Private</a></h5>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-							  Details
-							</button>
-                        </div>
-                    </div>
-                  </div>
+				  </div>
                 </div>
-                
-                <div class="col-3">
-                  <div class="card h-200">
-                    <img class="card-img-top" src="../images/Picture6.png" alt="Image not found ">
-                    <div class="card-body">
-                        <div class="col text-center">              
-                            
-                            <h5 class="card-title">CUSU Ball <a class="badge badge-info">CUSU</a></h5> 
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-							  Details
-							</button>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-                
-                   
-                
+				
+			<?php $j++;
+			}; ?>
+			
             </div>
             
         </div>
@@ -210,29 +181,33 @@ session_start();
 	</div>
 
   <!-- Pagination -->
-  <ul class="pagination justify-content-center">
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-            <span class="sr-only">Previous</span>
-          </a>
-    </li>
-    <li class="page-item">
-      <a class="page-link" href="#">1</a>
-    </li>
-    <li class="page-item">
-      <a class="page-link" href="#">2</a>
-    </li>
-    <li class="page-item">
-      <a class="page-link" href="#">3</a>
-    </li>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-            <span class="sr-only">Next</span>
-          </a>
-    </li>
-  </ul>
+  <form method="POST" action="pages.php">
+  
+	  <ul class="pagination justify-content-center">
+		<li class="page-item">
+		  <button class="page-link" aria-label="Previous" name="Previous">
+				<span aria-hidden="true">&laquo;</span>
+				<span class="sr-only">Previous</span>
+			  </button>
+		</li>
+		<li class="page-item">
+		  <button class="page-link" name="1">1</button>
+		</li>
+		<li class="page-item">
+		  <button class="page-link" name="2">2</button>
+		</li>
+		<li class="page-item">
+		  <button class="page-link" name="3">3</button>
+		</li>
+		<li class="page-item">
+		  <button class="page-link" name="Next" aria-label="Next">
+				<span aria-hidden="true">&raquo;</span>
+				<span class="sr-only">Next</span>
+			  </button>
+		</li>
+	  </ul>
+  
+  </form>
   
 		  <div class="row justify-content-md-center">
             <div class="form-check">
@@ -254,35 +229,53 @@ session_start();
 </div>
 
 <!-- reference startbootstrap.com/snippets/full-image-background/
-	 startbootstrap.com/snippets/portfolio-four-column/https://stackoverflow.com/questions/55350639/how-to-open-bootstrap-modal-using-a-button-click
+	 startbootstrap.com/snippets/portfolio-four-column/https://www.codexworld.com/bootstrap-modal-dynamic-content-jquery-ajax-php-mysql/
 	 https://mdbootstrap.com/docs/jquery/forms/search/
 -->
 
 
-<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Event details</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Go back</button>
-        <a type="button" class="btn btn-primary" href="takeaphoto_dude.php">Join</a>
-      </div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Events detail:</h4>
+            </div>
+            <div class="modal-body">
+				<?php echo '<h4>'.$row['ename'].'</h4>';
+					  echo '<p> abstract: '.$row['abstract'].'</p>';
+					  echo '<img src= '. $row['photolink'].'>';
+					  echo '<p> type: '.$row['type'].'</p>';
+					  echo '<p> venue: '.$row['venue'].'</p>';
+					  echo '<p> time: '.$row['time'].'</p>';
+					  echo '<p> vacancies: '.$row['vacancies'].'</p>';
+					  echo '<p> duration: '.$row['duration'].'</p>';
+					  echo '<p> date: '.$row['date'].'</p>';
+				?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Go back</button>
+				<a type="button" class="btn btn-primary" href="takeaphoto_dude.php">Join</a>
+            </div>
+        </div>
+      
     </div>
-  </div>
 </div>
 
 </body>
 
 <script type="text/javascript">
-
+	$(document).ready(function(){
+    $('.openPopup').on('click',function(){
+        var dataURL = $(this).attr('data-href');
+        $('.modal-body').load(dataURL,function(){
+            $('#myModal').modal({show:true});
+        });
+    }); 
+});
 </script>
 
 </html>
