@@ -132,7 +132,7 @@ session_start();
                         <div class="col text-center">
                             <h5 class="card-title"><?php echo $row['ename']; ?>
 							<?php if($row['type'] != 'public') { ?>
-							<a class="badge badge-info"><?php echo $row['type']; ?></a> <?php } ?>/h5>
+							<a class="badge badge-info"><?php echo $row['type']; ?></a> <?php } ?> </h5>
 							<a href="javascript:void(0);" data-href=<?php echo"getContent.php?id=${row['id']}"; ?> class="openPopup">Details</a>
 
 						</div>
@@ -181,7 +181,7 @@ session_start();
 	</div>
 
   <!-- Pagination -->
-  <form method="POST" action="pages.php">
+  <form method="POST" action="myevents.php">
   
 	  <ul class="pagination justify-content-center">
 		<li class="page-item">
@@ -245,15 +245,15 @@ session_start();
                 <h4 class="modal-title">Events detail:</h4>
             </div>
             <div class="modal-body">
-				<?php echo '<h4>'.$row['ename'].'</h4>';
-					  echo '<p> abstract: '.$row['abstract'].'</p>';
-					  echo '<img src= '. $row['photolink'].'>';
-					  echo '<p> type: '.$row['type'].'</p>';
-					  echo '<p> venue: '.$row['venue'].'</p>';
-					  echo '<p> time: '.$row['time'].'</p>';
-					  echo '<p> vacancies: '.$row['vacancies'].'</p>';
-					  echo '<p> duration: '.$row['duration'].'</p>';
-					  echo '<p> date: '.$row['date'].'</p>';
+				<?php echo '<h4>'.$row_m['ename'].'</h4>';
+					  echo '<p> abstract: '.$row_m['abstract'].'</p>';
+					  echo '<img src= '. $row_m['photolink'].'>';
+					  echo '<p> type: '.$row_m['type'].'</p>';
+					  echo '<p> venue: '.$row_m['venue'].'</p>';
+					  echo '<p> time: '.$row_m['time'].'</p>';
+					  echo '<p> vacancies: '.$row_m['vacancies'].'</p>';
+					  echo '<p> duration: '.$row_m['duration'].'</p>';
+					  echo '<p> date: '.$row_m['date'].'</p>';
 				?>
             </div>
             <div class="modal-footer">
@@ -266,6 +266,13 @@ session_start();
 </div>
 
 </body>
+
+<?php
+
+include 'getContent.php';
+include 'pages.php';
+
+?>
 
 <script type="text/javascript">
 	$(document).ready(function(){
