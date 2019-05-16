@@ -46,9 +46,6 @@ include 'pages.php';
 	
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
 
@@ -141,12 +138,45 @@ include 'pages.php';
                             <h5 class="card-title"><?php echo $row['ename']; ?>
 							<?php if($row['type'] != 'public') { ?>
 							<a class="badge badge-info"><?php echo $row['type']; ?></a> <?php } ?> </h5>
-							<a href="javascript:void(0);" data-href=<?php echo"getContent.php?id=${row['id']}"; ?> class="openPopup">Details</a>
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal<?php echo $row['id']; ?>">
+							  Details
+							</button>
 
 						</div>
                     </div>
 				  </div>
                 </div>
+				
+				<!-- Modal -->
+				<div class="modal" id="exampleModal<?php echo $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+					<div class="modal-content">
+					  <div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Event details</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						  <span aria-hidden="true">×</span>
+						</button>
+					  </div>
+					  <div class="modal-body">
+						
+								<?php echo '<h4>'.$row['ename'].'</h4>';
+									  echo '<p> abstract: '.$row['abstract'].'</p>';
+									  echo '<img src= \''. $row['photolink'].'\'>';
+									  echo '<p> type: '.$row['type'].'</p>';
+									  echo '<p> venue: '.$row['venue'].'</p>';
+									  echo '<p> time: '.$row['time'].'</p>';
+									  echo '<p> vacancies: '.$row['vacancies'].'</p>';
+									  echo '<p> duration: '.$row['duration'].'</p>';
+									  echo '<p> date: '.$row['date'].'</p>';
+								?>
+					  </div>
+					  <div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Go back</button>
+						<a type="button" class="btn btn-primary" href="takeaphoto_dude.php">Join</a>
+					  </div>
+					</div>
+				  </div>
+				</div>
 				
 			<?php $j++;
 			} ?>
@@ -167,12 +197,45 @@ include 'pages.php';
                             <h5 class="card-title"><?php echo $row['ename']; ?>
 							<?php if($row['type'] != 'public') { ?>
 							<a class="badge badge-info"><?php echo $row['type']; ?></a> <?php } ?></h5>
-							<a href="javascript:void(0);" data-href=<?php echo"getContent.php?id=${row['id']}"; ?> class="openPopup">Details</a>
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal<?php echo $row['id']; ?>">
+							  Details
+							</button>
 
 						</div>
                     </div>
 				  </div>
                 </div>
+				
+				<!-- Modal -->
+				<div class="modal" id="exampleModal<?php echo $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+					<div class="modal-content">
+					  <div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Event details</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						  <span aria-hidden="true">×</span>
+						</button>
+					  </div>
+					  <div class="modal-body">
+						
+								<?php echo '<h4>'.$row['ename'].'</h4>';
+									  echo '<p> abstract: '.$row['abstract'].'</p>';
+									  echo '<img src= \''. $row['photolink'].'\'>';
+									  echo '<p> type: '.$row['type'].'</p>';
+									  echo '<p> venue: '.$row['venue'].'</p>';
+									  echo '<p> time: '.$row['time'].'</p>';
+									  echo '<p> vacancies: '.$row['vacancies'].'</p>';
+									  echo '<p> duration: '.$row['duration'].'</p>';
+									  echo '<p> date: '.$row['date'].'</p>';
+								?>
+					  </div>
+					  <div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Go back</button>
+						<a type="button" class="btn btn-primary" href="takeaphoto_dude.php">Join</a>
+					  </div>
+					</div>
+				  </div>
+				</div>
                 
 				<?php while(($row = $query->fetch(\PDO::FETCH_ASSOC)) && $j < 5){
 				
@@ -186,13 +249,47 @@ include 'pages.php';
                             <h5 class="card-title"><?php echo $row['ename']; ?>
 							<?php if($row['type'] != 'public') { ?>
 							<a class="badge badge-info"><?php echo $row['type']; ?></a> <?php } ?></h5>
-							<a href="javascript:void(0);" data-href=<?php echo"getContent.php?id=${row['id']}"; ?> class="openPopup">Details</a>
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal<?php echo $row['id']; ?>">
+							  Details
+							</button>
 
 						</div>
                     </div>
 				  </div>
                 </div>
 				
+				
+				<!-- Modal -->
+				<div class="modal" id="exampleModal<?php echo $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+					<div class="modal-content">
+					  <div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Event details</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						  <span aria-hidden="true">×</span>
+						</button>
+					  </div>
+					  <div class="modal-body">
+						
+								<?php echo '<h4>'.$row['ename'].'</h4>';
+									  echo '<p> abstract: '.$row['abstract'].'</p>';
+									  echo '<img src= \''. $row['photolink'].'\'>';
+									  echo '<p> type: '.$row['type'].'</p>';
+									  echo '<p> venue: '.$row['venue'].'</p>';
+									  echo '<p> time: '.$row['time'].'</p>';
+									  echo '<p> vacancies: '.$row['vacancies'].'</p>';
+									  echo '<p> duration: '.$row['duration'].'</p>';
+									  echo '<p> date: '.$row['date'].'</p>';
+								?>
+					  </div>
+					  <div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Go back</button>
+						<a type="button" class="btn btn-primary" href="takeaphoto_dude.php">Join</a>
+					  </div>
+					</div>
+				  </div>
+				</div>
+
 			<?php $j++;
 			} ?>
 			
@@ -258,48 +355,11 @@ include 'pages.php';
 -->
 
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Events detail:</h4>
-            </div>
-            <div class="modal-body">
-				<?php echo '<h4>'.$row_m['ename'].'</h4>';
-					  echo '<p> abstract: '.$row_m['abstract'].'</p>';
-					  echo '<img src= \''. $row_m['photolink'].'\'>';
-					  echo '<p> type: '.$row_m['type'].'</p>';
-					  echo '<p> venue: '.$row_m['venue'].'</p>';
-					  echo '<p> time: '.$row_m['time'].'</p>';
-					  echo '<p> vacancies: '.$row_m['vacancies'].'</p>';
-					  echo '<p> duration: '.$row_m['duration'].'</p>';
-					  echo '<p> date: '.$row_m['date'].'</p>';
-				?>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Go back</button>
-				<a type="button" class="btn btn-primary" href="takeaphoto_dude.php">Join</a>
-            </div>
-        </div>
-      
-    </div>
-</div>
 
 </body>
 
 <script type="text/javascript">
-	$(document).ready(function(){
-    $('.openPopup').on('click',function(){
-        var dataURL = $(this).attr('data-href');
-        $('.modal-body').load(dataURL,function(){
-            $('#myModal').modal({show:true});
-        });
-    }); 
-});
+
 </script>
 
 </html>
