@@ -1,5 +1,8 @@
 <?php
 
+if(!(isset($_SESSION['page'])))
+	$_SESSION['page'] = 1;
+
 	if(isset($_POST['Previous'])){
 		if($_SESSION['page'] == 2)
 			$_SESSION['page'] = 1;
