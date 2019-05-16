@@ -210,8 +210,10 @@ include '/organizer/pages.php';
 				  </div>
 				</div>
 				
-					<?php }
+					<?php 	
+					
 					break;
+					}
 				}
 				
 				else { ?>
