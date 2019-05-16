@@ -70,6 +70,13 @@ if(isset($_COOKIE['id'])){
           <a class="nav-link" href="index.php">Home
                 <span class="sr-only">(current)</span>
               </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Services</a>
+        </li>
 		<?php if(isset($_COOKIE['id'])){ 
 				if(isset($_COOKIE['organizer'])){
 		?>
@@ -109,6 +116,7 @@ if(isset($_COOKIE['id'])){
   <!-- Page Heading -->
   <h1 class="my-4">Upcoming Event
   <br>
+    <small>listed in pages( check it out now! )</small>
   </h1>
 
 </div>
