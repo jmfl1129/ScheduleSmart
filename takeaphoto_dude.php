@@ -165,7 +165,7 @@
 			  context = canvas.getContext('2d');
 			  context.drawImage(video, 0, 0, width, height);
 
-			  img.src = canvas.toDataURL('image/png');
+			  img.src = canvas.toDataURL('images/xxx.png');
 			  document.body.appendChild(img);
 			}
 		
