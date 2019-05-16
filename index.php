@@ -14,7 +14,7 @@ session_start();
 if(isset($_COOKIE['id'])){
 	
 	$qt = 'SELECT * FROM users WHERE id = :name;';
-	$queryt = $conn->prepare($q);
+	$queryt = $conn->prepare($qt);
 	$queryt->bindValue(':name', $_COOKIE['id']);
 	$queryt->execute();
 		  
@@ -24,6 +24,9 @@ if(isset($_COOKIE['id'])){
 		setcookie('name', $rowt['name'], time() + (86400 * 30) , "/");
 		setcookie('organizer', $rowt['organizer'], time() + (86400 * 30) , "/");
 	}
+}
+
+
 	
 	$q = "SELECT * FROM events WHERE type = :name OR type = 'public';";
 	$query = $conn->prepare($q);
@@ -34,7 +37,6 @@ if(isset($_COOKIE['id'])){
 
 include 'getContent.php';
 include 'pages.php';
-}
 ?>
 
 
