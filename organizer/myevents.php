@@ -1,18 +1,18 @@
 <?php
-/*
+session_start();
+	$db = parse_url(getenv("DATABASE_URL"));
+  $conn = new PDO("pgsql:". sprintf(
+    "host=%s;port=%s;user=%s;password=%s;dbname=%s",
+    $db["host"],
+    $db["port"],
+    $db["user"],
+    $db["pass"],
+    ltrim($db["path"], "/")
+    ));
+	
+?>
 
 
-<?phpwhile ($row = $sql->fetch(\PDO::FETCH_ASSOC))
-{
-?>
-	 <h5 class="card-title"><?php echo $row['ename']; ?>
-	 <a class="badge badge-info"><?php echo $row['type']; ?></a>
-	 </h5>
-<?php
-}
-?>
-*/
-?>
 
 
 <!DOCTYPE html>
@@ -21,7 +21,7 @@
 
 	<title>ScheduleSmart</title> 
 	
-	<link rel="stylesheet" href="../css/css_in_most_pages.css">
+	<link rel="stylesheet" href="css/css_in_most_pages.css">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
@@ -45,28 +45,31 @@
 	<!-- navigation bar on top -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
 		<div class="container">
-    <a class="navbar-brand" href="../organizer/myevents.php">ScheduleSmart Org</a>
+    <a class="navbar-brand" href="index.php">ScheduleSmart Org</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home
+          <a class="nav-link" href="index.php">Home
                 <span class="sr-only">(current)</span>
               </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
+          <a class="nav-link" href="organizer/members.php">My member</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Services</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
+          <a class="nav-link" href="organizer/createevent.php">Create my own event</a>
         </li>
 		<li class="nav-item">
-		  <a class="nav-link" href="../login.php">Sign in</a>
+          <a class="nav-link" href="organizer/options.php">Option</a>
+        </li>
+		<li class="nav-item">
+		  <a class="nav-link" href="organizer/myevents.php"> <?php echo $_COOKIE['name']; ?> </a>
+		</li>
+		<li class="nav-item">
+		  <a class="nav-link" href="logout.php">Log out</a>
 		</li>
 		
 		<li>
@@ -108,8 +111,10 @@
                     <div class="card-body">
                         <div class="col text-center">
                             <h5 class="card-title">Chung Chi Chapel Service</h5>
-							<a class="btn btn-primary" data-toggle="modal" href="#myModal" id="modellink">Details</a>
-							<div class="modal-container"></div>
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+							  Details
+							</button>
+
 						</div>
                     </div>
 				  </div>
@@ -121,8 +126,9 @@
                     <div class="card-body">
                         <div class="col text-center">
                             <h5 class="card-title">Medicine Fair 2019</h5>
-                            <a class="btn btn-primary" data-toggle="modal" href="#myModal" id="modellink">Details</a>
-							<div class="modal-container"></div>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+							  Details
+							</button>
                         </div>
                     </div>
                   </div>
@@ -134,8 +140,9 @@
                     <div class="card-body">
                         <div class="col text-center">
                             <h5 class="card-title">Meditation @ Learning Garden</h5>
-                            <a class="btn btn-primary" data-toggle="modal" href="#myModal" id="modellink">Details</a>
-							<div class="modal-container"></div>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+							  Details
+							</button>
                         </div>
                     </div>
                   </div>
@@ -154,7 +161,9 @@
                     <div class="card-body">
                         <div class="col text-center">
                             <h5 class="card-title">Student Expo</h5>
-                            <a href="#" class="btn btn-primary">Details</a>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+							  Details
+							</button>
                         </div>
                     </div>
                   </div>
@@ -166,7 +175,9 @@
                     <div class="card-body">
                         <div class="col text-center">
                             <h5 class="card-title">Basketball with Jo <a class="badge badge-info">Private</a></h5>
-                            <a href="#" class="btn btn-primary">Details</a>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+							  Details
+							</button>
                         </div>
                     </div>
                   </div>
@@ -179,7 +190,9 @@
                         <div class="col text-center">              
                             
                             <h5 class="card-title">CUSU Ball <a class="badge badge-info">CUSU</a></h5> 
-                            <a href="#" class="btn btn-primary">Details</a>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+							  Details
+							</button>
                         </div>
                     </div>
                   </div>
@@ -240,23 +253,35 @@
 </div>
 
 <!-- reference startbootstrap.com/snippets/full-image-background/
-	 startbootstrap.com/snippets/portfolio-four-column/
-	 https://www.phpflow.com/jquery/create-to-create-model-window/
+	 startbootstrap.com/snippets/portfolio-four-column/https://stackoverflow.com/questions/55350639/how-to-open-bootstrap-modal-using-a-button-click
 	 https://mdbootstrap.com/docs/jquery/forms/search/
 -->
 
+
+<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Event details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Go back</button>
+        <a type="button" class="btn btn-primary" href="takeaphoto_dude.php">Join</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 
-
 <script type="text/javascript">
-	$(document).ready(function(){
-		var url = "modalbox.php";
-		jQuery('#modellink').click(function(e) {
-		    $('.modal-container').load(url,function(result){
-				$('#myModal').modal({show:true});
-			});
-		});
-	});
+
 </script>
 
 </html>
