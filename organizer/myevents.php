@@ -13,7 +13,6 @@ session_start();
 	$q = "SELECT * FROM events WHERE type = :name OR type = 'public';";
 	$query = $conn->prepare($q);
 	$query->bindValue(':name', $_COOKIE['organizer']);
-	echo $_COOKIE['organizer'];
 	$query->execute();
 		  
 	
