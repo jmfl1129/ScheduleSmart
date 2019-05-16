@@ -35,8 +35,8 @@ if(isset($_COOKIE['id'])){
 	
 	
 
-include 'getContent.php';
-include 'pages.php';
+include '/organizer/getContent.php';
+include '/organizer/pages.php';
 ?>
 
 
@@ -110,12 +110,12 @@ include 'pages.php';
 		<?php } ?>
 		
 	  <form method="POST" action="index.php">
-		<li>
+		<li class="nav-item">
 			<div class="active-pink-3 active-pink-4">
-			  <input class="form-control" type="text" placeholder="Search (type event name here)" aria-label="Search">
+			  <input class="form-control" type="text" placeholder="Search" aria-label="Search">
 			</div>
 		</li>
-		<li>
+		<li class="nav-item">
 			 <button type="submit" name="Search" class="btn ">Search</button>
 		</li>	  
 	  </form>

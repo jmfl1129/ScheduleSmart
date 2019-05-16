@@ -312,7 +312,7 @@ include 'pages.php';
 	</div>
 
   <!-- Pagination -->
-  <form method="POST" action="myevents.php">
+  <form method="POST" action="umyevents.php">
   
 	  <ul class="pagination justify-content-center">
 		<li class="page-item">
