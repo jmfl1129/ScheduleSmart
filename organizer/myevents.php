@@ -10,7 +10,7 @@ session_start();
     ltrim($db["path"], "/")
     ));
 	
-	$q = "SELECT * FROM events WHERE type = :name OR type = 'public';";
+	$q = "SELECT * FROM events WHERE type = :name;";
 	$query = $conn->prepare($q);
 	$query->bindValue(':name', $_COOKIE['organizer']);
 	$query->execute();
