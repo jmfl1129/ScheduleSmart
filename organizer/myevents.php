@@ -122,6 +122,9 @@ session_start();
 			$j = 0;
 			
 			while($row = $query->fetch(\PDO::FETCH_ASSOC) && $j < 3){
+				echo $row['photolink'];
+				echo $row['ename'];
+				echo $row['type'];
 				
 		
 		?>
