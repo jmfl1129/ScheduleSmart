@@ -28,7 +28,7 @@ if(isset($_COOKIE['id'])){
 
 
 	
-	$q = "SELECT * FROM events WHERE type = :name OR type = 'public';";
+	$q = "SELECT * FROM events WHERE type = 'public';";
 	$query = $conn->prepare($q);
 	$query->bindValue(':name', $_COOKIE['organizer']);
 	$query->execute();
