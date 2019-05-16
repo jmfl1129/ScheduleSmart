@@ -21,13 +21,14 @@ tags = soup.find_all('a')
 for tag in tags:
     messageurl = 'http://cumassmail.itsc.cuhk.edu.hk'+ tag.get('href')
     urllist.append(messageurl)
-print urllist
 
 #getting html of each message
-for murl in urllist:
-    mresponse = requests.get(murl)
-    data = mresponse.text
-    msoup = BeautifulSoup(data, 'html.parser')
-    print msoup
+
+for message in urllist:
+    page = urllib2.urlopen(message).read()
+    soup = BeautifulSoup(page)
+    print soup
+
+
 
     #have to search for events usiing scrapy

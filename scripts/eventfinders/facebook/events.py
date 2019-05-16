@@ -15,23 +15,9 @@ E_ERR = 1
 SEPARATOR = ';'
 
 # user specific configuration
-AUTH_EMAIL = 'MYEMAIL@MYDOMAIN.COM'
+AUTH_EMAIL = 'dully.ouyang.7'
 EXPAND_HOSTS = False
-HOST_LIST = [ 'https://www.facebook.com/moussetofficial', \
-              'https://www.facebook.com/moullinex', \
-              'https://www.facebook.com/xinobimusic', \
-              'https://www.facebook.com/pg/claptone.official', \
-              'https://www.facebook.com/realblackcoffee', \
-              'https://www.facebook.com/drpackeredits', \
-              'https://www.facebook.com/MastersAtWorkOfficial', \
-              'https://www.facebook.com/armandvanhelden', \
-              'https://www.facebook.com/cassiusofficial/', \
-              'https://www.facebook.com/fennecandwolf', \
-              'https://www.facebook.com/DimitriFromParisOfficial', \
-              'https://www.facebook.com/aeroplanemusiclove', \
-              'https://www.facebook.com/disclosureuk', \
-              'https://www.facebook.com/Nicolas-Jaar-15727540611', \
-              'https://www.facebook.com/tensnake', \
+HOST_LIST = [ 'https://www.facebook.com/ScheduleSmart-2802336679992016', \
             ]
 
 FB_URL = 'https://www.facebook.com/'

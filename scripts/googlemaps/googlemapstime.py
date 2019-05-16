@@ -7,8 +7,8 @@ import json
 import re
 from datetime import datetime
 
-gmaps = googlemaps.Client(key='AIzaSyDCaclIkaPmL6tsZ48huhkcn3crBRpJ2sQ')
-api_key='AIzaSyDCaclIkaPmL6tsZ48huhkcn3crBRpJ2sQ'
+gmaps = googlemaps.Client(key='hidden')
+api_key='hidden'
 
 #TODO delete dummy data
 origin='Washington,DC'
@@ -37,5 +37,7 @@ gmapsJson = dataDL(gmapsURL)
 
 timeValue = gmapsJson['rows'][0]['elements'][0]["duration"]["value"]
 
-print('time to destination in seconds is ' + str(timeValue))
-print (gmapsJson)
+print("JSON returned: " + str(gmapsJson))
+print('time from '+ origin +' to '+destination +' in seconds is ' + str(timeValue))
+
+print("NOTE: if time is less than time in between events, show event in list")
