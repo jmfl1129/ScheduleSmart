@@ -19,23 +19,23 @@
 	
     <!-- navigation bar on top -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="/schedulesmart/organizer/myevents.php">ScheduleSmart Org</a>
+    <a class="navbar-brand" href="../index.php">ScheduleSmart Org</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item ">
-          <a class="nav-link" href="/schedulesmart/organizer/myevents.php">My events</a>
+          <a class="nav-link" href="myevents.php">My events</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/schedulesmart/organizer/createevent.php">Create event</a>
+          <a class="nav-link" href="createevent.php">Create event</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/schedulesmart/organizer/members.php">Members</a>
+          <a class="nav-link" href="members.php">Members</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="/schedulesmart/organizer/options.php">Options<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="options.php">Options<span class="sr-only">(current)</span></a>
         </li>
       </ul>
     </div>
