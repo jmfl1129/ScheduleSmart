@@ -129,7 +129,7 @@ session_start();
                 
                 <div class="col-3 d-flex align-items-stretch">
                   <div class="card h-200">
-                    <img class="card-img-top" src= <?php echo $row['photolink']; ?> alt="Image not found ">
+                    <img class='card-img-top' src= <?php echo "'..". $row['photolink'] . "'"; ?> alt="Image not found ">
                     <div class="card-body">
                         <div class="col text-center">
                             <h5 class="card-title"><?php echo $row['ename']; ?>
@@ -143,7 +143,7 @@ session_start();
                 </div>
 				
 			<?php $j++;
-			}; ?>
+			} ?>
 			
             </div>
             <br>    
@@ -158,12 +158,12 @@ session_start();
 				
 				<div class="col-3 d-flex align-items-stretch">
                   <div class="card h-200">
-                    <img class="card-img-top" src= <?php echo $row['photolink']; ?> alt="Image not found ">
+                    <img class="card-img-top" src= <?php echo  "'..". $row['photolink'] . "'"; ?> alt="Image not found ">
                     <div class="card-body">
                         <div class="col text-center">
                             <h5 class="card-title"><?php echo $row['ename']; ?>
 							<?php if($row['type'] != 'public') { ?>
-							<a class="badge badge-info"><?php echo $row['type']; ?></a> <?php } ?>/h5>
+							<a class="badge badge-info"><?php echo $row['type']; ?></a> <?php } ?></h5>
 							<a href="javascript:void(0);" data-href=<?php echo"getContent.php?id=${row['id']}"; ?> class="openPopup">Details</a>
 
 						</div>
@@ -172,7 +172,7 @@ session_start();
                 </div>
 				
 			<?php $j++;
-			}; ?>
+			} ?>
 			
             </div>
             
@@ -249,7 +249,7 @@ session_start();
             <div class="modal-body">
 				<?php echo '<h4>'.$row_m['ename'].'</h4>';
 					  echo '<p> abstract: '.$row_m['abstract'].'</p>';
-					  echo '<img src= '. $row_m['photolink'].'>';
+					  echo '<img src= \''. $row_m['photolink'].'\'>';
 					  echo '<p> type: '.$row_m['type'].'</p>';
 					  echo '<p> venue: '.$row_m['venue'].'</p>';
 					  echo '<p> time: '.$row_m['time'].'</p>';

@@ -2,13 +2,13 @@
 
 if(!empty($_GET['id'])){
 	
-	$q = "SELECT * FROM events WHERE id = :id;";
-	$query = $conn->prepare($q);
-	$query->bindValue(':id', $_GET['id']);
-	$result = $query->execute();
+	$q1 = "SELECT * FROM events WHERE id = :id;";
+	$query1 = $conn->prepare($q);
+	$query1->bindValue(':id', $_GET['id']);
+	$result5 = $query1->execute();
 	
-	if($result)
-		$row_m = $query->fetch(\PDO::FETCH_ASSOC);
+	if($result5)
+		$row_m = $query1->fetch(\PDO::FETCH_ASSOC);
 	else{
 		
 		$message = "Internal error";
