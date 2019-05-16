@@ -86,7 +86,7 @@
 		
 		<li>
 			<div class="active-pink-3 active-pink-4">
-			  <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+			  <input class="form-control" type="text" placeholder="No Search for here" aria-label="Search">
 			</div>
 		</li>
       </ul>
