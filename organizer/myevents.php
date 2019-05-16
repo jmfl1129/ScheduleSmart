@@ -188,7 +188,7 @@ include 'pages.php';
             <div class="row justify-content-md-center">
                 <div> <h1>row 2</h1>  </div>
 				
-				
+				<?php if($row) { ?>
 				<div class="col-3 d-flex align-items-stretch">
                   <div class="card h-200">
                     <img class="card-img-top" src= <?php echo  "'..". $row['photolink'] . "'"; ?> alt="Image not found ">
@@ -237,6 +237,8 @@ include 'pages.php';
 				  </div>
 				</div>
                 
+				<?php } ?>
+				
 				<?php while(($row = $query->fetch(\PDO::FETCH_ASSOC)) && $j < 5){
 				
 				?>
