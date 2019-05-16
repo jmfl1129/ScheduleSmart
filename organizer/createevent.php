@@ -41,10 +41,6 @@ function CreateEvent($ename, $edate, $eduration, $etime, $elocation, $etype, $ed
 			 </script>";
 	  }
 	  if($result){
-		$message = "Event created";
-		echo "<script
-			type='text/javascript'>alert('$message'); 
-			 </script>";
 		header('Location: myevents.php');
 	  }
   
