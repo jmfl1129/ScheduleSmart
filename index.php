@@ -109,14 +109,16 @@ include 'pages.php';
 		</li>
 		<?php } ?>
 		
+	  <form method="POST" action="index.php">
 		<li>
-			<form method="POST" action="index.php">
-				<div class="active-pink-3 active-pink-4">
-				  <input class="form-control" type="text" placeholder="Search (type event name here)" aria-label="Search">
-				  <button type="submit" name="Search" class="btn btn-primary">Search</button>
-				</div>
-			</form>
+			<div class="active-pink-3 active-pink-4">
+			  <input class="form-control" type="text" placeholder="Search (type event name here)" aria-label="Search">
+			</div>
 		</li>
+		<li>
+			 <button type="submit" name="Search" class="btn ">Search</button>
+		</li>	  
+	  </form>
       </ul>
     </div>
   </div>
