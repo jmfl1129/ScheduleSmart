@@ -110,9 +110,12 @@ include 'pages.php';
 		<?php } ?>
 		
 		<li>
-			<div class="active-pink-3 active-pink-4">
-			  <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-			</div>
+			<form method="POST" action="index.php">
+				<div class="active-pink-3 active-pink-4">
+				  <input class="form-control" type="text" placeholder="Search (type event name here)" aria-label="Search">
+				  <button type="submit" name="Search" class="btn btn-primary">Search</button>
+				</div>
+			</form>
 		</li>
       </ul>
     </div>
@@ -330,7 +333,7 @@ include 'pages.php';
 	</div>
 
   <!-- Pagination -->
-  <form method="POST" action="myevents.php">
+  <form method="POST" action="index.php">
   
 	  <ul class="pagination justify-content-center">
 		<li class="page-item">
