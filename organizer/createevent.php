@@ -49,7 +49,7 @@ function CreateEvent($ename, $edate, $eduration, $etime, $elocation, $etype, $ed
 	  }
   
   }
-}
+
 
 session_start();
 if (isset($_POST['Done'])){
