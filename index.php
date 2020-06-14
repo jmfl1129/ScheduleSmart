@@ -140,6 +140,367 @@ include 'pages.php';
 		  <h1 class="font-weight-light">Choose what you want</h1>
 		  
 		  
+		  <div class="card-deck">
+            <div class="row justify-content-md-center">
+                <div> <h1>row 1</h1>  </div>
+
+		<?php 
+			for ($i = 0; $i < ($_SESSION['page'] - 1) * 6; $i++){
+				$row = $query->fetch(\PDO::FETCH_ASSOC);
+			}
+
+			$j = 0;
+
+			while(($row = $query->fetch(\PDO::FETCH_ASSOC)) && $j < 3){
+				if(isset($_POST['Search'])){
+					if($row['ename'] == $_POST['Search']) {
+
+
+		?>
+
+
+                <div class="col-3 d-flex align-items-stretch">
+                  <div class="card h-200">
+                    <img class='card-img-top' src= <?php echo "'". $row['photolink'] . "'"; ?> alt="Image not found ">
+                    <div class="card-body">
+                        <div class="col text-center">
+                            <h5 class="card-title"><?php echo $row['ename']; ?>
+							<?php if($row['type'] != 'public') { ?>
+							<a class="badge badge-info"><?php echo $row['type']; ?></a> <?php } ?> </h5>
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal<?php echo $row['id']; ?>">
+							  Details
+							</button>
+
+						</div>
+                    </div>
+				  </div>
+                </div>
+
+				<!-- Modal -->
+				<div class="modal" id="exampleModal<?php echo $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+					<div class="modal-content">
+					  <div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Event details</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						  <span aria-hidden="true">×</span>
+						</button>
+					  </div>
+					  <div class="modal-body">
+
+								<?php echo '<h4>'.$row['ename'].'</h4>';
+									  echo '<p> abstract: '.$row['abstract'].'</p>';
+									  echo '<img src= \''. $row['photolink'].'\'>';
+									  echo '<p> type: '.$row['type'].'</p>';
+									  echo '<p> venue: '.$row['venue'].'</p>';
+									  echo '<p> time: '.$row['time'].'</p>';
+									  echo '<p> vacancies: '.$row['vacancies'].'</p>';
+									  echo '<p> duration: '.$row['duration'].'</p>';
+									  echo '<p> date: '.$row['date'].'</p>';
+								?>
+					  </div>
+					  <div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Go back</button>
+						<a type="button" class="btn btn-primary" href="takeaphoto_dude.php">Join</a>
+					  </div>
+					</div>
+				  </div>
+				</div>
+
+					<?php 	
+
+					break;
+					}
+				}
+
+				else { ?>
+
+
+                <div class="col-3 d-flex align-items-stretch">
+                  <div class="card h-200">
+                    <img class='card-img-top' src= <?php echo "'". $row['photolink'] . "'"; ?> alt="Image not found ">
+                    <div class="card-body">
+                        <div class="col text-center">
+                            <h5 class="card-title"><?php echo $row['ename']; ?>
+							<?php if($row['type'] != 'public') { ?>
+							<a class="badge badge-info"><?php echo $row['type']; ?></a> <?php } ?> </h5>
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal<?php echo $row['id']; ?>">
+							  Details
+							</button>
+
+						</div>
+                    </div>
+				  </div>
+                </div>
+
+				<!-- Modal -->
+				<div class="modal" id="exampleModal<?php echo $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+					<div class="modal-content">
+					  <div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Event details</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						  <span aria-hidden="true">×</span>
+						</button>
+					  </div>
+					  <div class="modal-body">
+
+								<?php echo '<h4>'.$row['ename'].'</h4>';
+									  echo '<p> abstract: '.$row['abstract'].'</p>';
+									  echo '<img src= \''. $row['photolink'].'\'>';
+									  echo '<p> type: '.$row['type'].'</p>';
+									  echo '<p> venue: '.$row['venue'].'</p>';
+									  echo '<p> time: '.$row['time'].'</p>';
+									  echo '<p> vacancies: '.$row['vacancies'].'</p>';
+									  echo '<p> duration: '.$row['duration'].'</p>';
+									  echo '<p> date: '.$row['date'].'</p>';
+								?>
+					  </div>
+					  <div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Go back</button>
+						<a type="button" class="btn btn-primary" href="takeaphoto_dude.php">Join</a>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			<?php
+
+
+
+			$j++;
+
+				}
+			}
+
+			?>
+
+            </div>
+            <br>    
+
+            <!-- second row of events at a different t ime -->
+            <div class="row justify-content-md-center">
+                <div> <h1>row 2</h1>  </div>
+
+				<?php if($row && !(isset($_POST['Search']))) { ?>
+				<div class="col-3 d-flex align-items-stretch">
+                  <div class="card h-200">
+                    <img class="card-img-top" src= <?php echo  "'". $row['photolink'] . "'"; ?> alt="Image not found ">
+                    <div class="card-body">
+                        <div class="col text-center">
+                            <h5 class="card-title"><?php echo $row['ename']; ?>
+							<?php if($row['type'] != 'public') { ?>
+							<a class="badge badge-info"><?php echo $row['type']; ?></a> <?php } ?></h5>
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal<?php echo $row['id']; ?>">
+							  Details
+							</button>
+
+						</div>
+                    </div>
+				  </div>
+                </div>
+
+				<!-- Modal -->
+				<div class="modal" id="exampleModal<?php echo $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+					<div class="modal-content">
+					  <div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Event details</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						  <span aria-hidden="true">×</span>
+						</button>
+					  </div>
+					  <div class="modal-body">
+
+								<?php echo '<h4>'.$row['ename'].'</h4>';
+									  echo '<p> abstract: '.$row['abstract'].'</p>';
+									  echo '<img src= \''. $row['photolink'].'\'>';
+									  echo '<p> type: '.$row['type'].'</p>';
+									  echo '<p> venue: '.$row['venue'].'</p>';
+									  echo '<p> time: '.$row['time'].'</p>';
+									  echo '<p> vacancies: '.$row['vacancies'].'</p>';
+									  echo '<p> duration: '.$row['duration'].'</p>';
+									  echo '<p> date: '.$row['date'].'</p>';
+								?>
+					  </div>
+					  <div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Go back</button>
+						<a type="button" class="btn btn-primary" href="takeaphoto_dude.php">Join</a>
+					  </div>
+					</div>
+				  </div>
+				</div>
+
+				<?php } ?>
+
+				<?php 
+
+			while(($row = $query->fetch(\PDO::FETCH_ASSOC)) && $j < 5){
+				if(isset($_POST['Search'])){
+					if($row['ename'] == $_POST['Search']) {
+
+
+		?>
+
+
+                <div class="col-3 d-flex align-items-stretch">
+                  <div class="card h-200">
+                    <img class='card-img-top' src= <?php echo "'". $row['photolink'] . "'"; ?> alt="Image not found ">
+                    <div class="card-body">
+                        <div class="col text-center">
+                            <h5 class="card-title"><?php echo $row['ename']; ?>
+							<?php if($row['type'] != 'public') { ?>
+							<a class="badge badge-info"><?php echo $row['type']; ?></a> <?php } ?> </h5>
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal<?php echo $row['id']; ?>">
+							  Details
+							</button>
+
+						</div>
+                    </div>
+				  </div>
+                </div>
+
+				<!-- Modal -->
+				<div class="modal" id="exampleModal<?php echo $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+					<div class="modal-content">
+					  <div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Event details</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						  <span aria-hidden="true">×</span>
+						</button>
+					  </div>
+					  <div class="modal-body">
+
+								<?php echo '<h4>'.$row['ename'].'</h4>';
+									  echo '<p> abstract: '.$row['abstract'].'</p>';
+									  echo '<img src= \''. $row['photolink'].'\'>';
+									  echo '<p> type: '.$row['type'].'</p>';
+									  echo '<p> venue: '.$row['venue'].'</p>';
+									  echo '<p> time: '.$row['time'].'</p>';
+									  echo '<p> vacancies: '.$row['vacancies'].'</p>';
+									  echo '<p> duration: '.$row['duration'].'</p>';
+									  echo '<p> date: '.$row['date'].'</p>';
+								?>
+					  </div>
+					  <div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Go back</button>
+						<a type="button" class="btn btn-primary" href="takeaphoto_dude.php">Join</a>
+					  </div>
+					</div>
+				  </div>
+				</div>
+
+					<?php 	
+
+					break;
+					}
+				}
+
+				else { ?>
+
+
+                <div class="col-3 d-flex align-items-stretch">
+                  <div class="card h-200">
+                    <img class='card-img-top' src= <?php echo "'". $row['photolink'] . "'"; ?> alt="Image not found ">
+                    <div class="card-body">
+                        <div class="col text-center">
+                            <h5 class="card-title"><?php echo $row['ename']; ?>
+							<?php if($row['type'] != 'public') { ?>
+							<a class="badge badge-info"><?php echo $row['type']; ?></a> <?php } ?> </h5>
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal<?php echo $row['id']; ?>">
+							  Details
+							</button>
+
+						</div>
+                    </div>
+				  </div>
+                </div>
+
+				<!-- Modal -->
+				<div class="modal" id="exampleModal<?php echo $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+					<div class="modal-content">
+					  <div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Event details</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						  <span aria-hidden="true">×</span>
+						</button>
+					  </div>
+					  <div class="modal-body">
+
+								<?php echo '<h4>'.$row['ename'].'</h4>';
+									  echo '<p> abstract: '.$row['abstract'].'</p>';
+									  echo '<img src= \''. $row['photolink'].'\'>';
+									  echo '<p> type: '.$row['type'].'</p>';
+									  echo '<p> venue: '.$row['venue'].'</p>';
+									  echo '<p> time: '.$row['time'].'</p>';
+									  echo '<p> vacancies: '.$row['vacancies'].'</p>';
+									  echo '<p> duration: '.$row['duration'].'</p>';
+									  echo '<p> date: '.$row['date'].'</p>';
+								?>
+					  </div>
+					  <div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Go back</button>
+						<a type="button" class="btn btn-primary" href="takeaphoto_dude.php">Join</a>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			<?php
+
+
+
+			$j++;
+
+				}
+			}
+
+			?>
+
+            </div>
+
+        </div>
+
+
+
+	</div>
+
+  <!-- Pagination -->
+  <form method="POST" action="index.php">
+
+	  <ul class="pagination justify-content-center">
+		<li class="page-item">
+		  <button class="page-link" aria-label="Previous" name="Previous">
+				<span aria-hidden="true">&laquo;</span>
+				<span class="sr-only">Previous</span>
+			  </button>
+		</li>
+		<li class="page-item">
+		  <button class="page-link" name="1">1</button>
+		</li>
+		<li class="page-item">
+		  <button class="page-link" name="2">2</button>
+		</li>
+		<li class="page-item">
+		  <button class="page-link" name="3">3</button>
+		</li>
+		<li class="page-item">
+		  <button class="page-link" name="Next" aria-label="Next">
+				<span aria-hidden="true">&raquo;</span>
+				<span class="sr-only">Next</span>
+			  </button>
+		</li>
+	  </ul>
+
+  </form>
+
+		  <div class="row justify-content-md-center">
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="checkOnlyFreeEvents">
+                <label class="form-check-label" for="exampleCheck1">show only events when I'm free</label>
+            </div>     
+        </div>
+		  
 
 <!-- /.container -->
   <footer id="sticky-footer" class="py-4 bg-light text-dark-50">
