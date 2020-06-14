@@ -5,6 +5,8 @@ Open a browser.
 
 go to https://csci4140-schedulesmart.herokuapp.com/
 
+short demo (16 May, 2019): https://www.youtube.com/watch?v=O2XNEY2eelg&feature=youtu.be
+
 Thanks
 
 Repository URL: https://github.com/jmfl1129/ScheduleSmart
