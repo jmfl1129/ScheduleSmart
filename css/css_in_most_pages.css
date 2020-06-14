@@ -1,5 +1,5 @@
 body {
-  background: url('https://images.unsplash.com/photo-1555445091-5a8b655e8a4a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80') no-repeat center center fixed;
+  background: url('https://images.unsplash.com/photo-1555445091-5a8b655e8a4a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80') no-repeat center center fixed !important;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
